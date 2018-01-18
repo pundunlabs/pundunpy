@@ -1,0 +1,2 @@
+-e git+ssh://git@github.com/pundunlabs/scrampy.git@master#egg=scrampy
+protobuf==3.5.1

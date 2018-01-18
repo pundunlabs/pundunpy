@@ -1,0 +1,20 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+scrampy = {ref = "master", git = "ssh://git@github.com/pundunlabs/scrampy.git", editable = true}
+protobuf = "==3.5.1"
+
+
+[requires]
+
+python_version = "3.5"
