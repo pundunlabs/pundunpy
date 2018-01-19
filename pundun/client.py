@@ -2,6 +2,7 @@ import asyncio
 import pprint
 import logging
 from pundun import apollo_pb2 as apollo
+from pundun import utils
 import scram
 import sys
 
@@ -57,40 +58,58 @@ class Client:
         return scram.disconnect(streamwriter = self.writer,
                                 loop = self.loop)
 
+    def create_table(self, table_name, key_def, options):
+        return self.loop.run_until_complete(self._create_table(table_name,
+                                                               key_def,
+                                                               options))
+
+    def _create_table(self, table_name, key_def, options):
+        pdu = self._make_pdu()
+        pdu.create_table.table_name = table_name
+        pdu.create_table.keys.extend(key_def)
+        table_options = utils.make_table_options(options)
+        pdu.create_table.table_options.extend(table_options)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def delete_table(self, table_name):
+        return self.loop.run_until_complete(self._delete_table(table_name))
+
+    def _delete_table(self, table_name):
+        pdu = self._make_pdu()
+        pdu.delete_table.table_name = table_name
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
     def read(self, table_name, key):
         return self.loop.run_until_complete(self._read(table_name, key))
 
     def _read(self, table_name, key):
         pdu = self._make_pdu()
         pdu.read.table_name = table_name
-        key_fields = self._make_fields(key)
+        key_fields = utils.make_fields(key)
         pdu.read.key.extend(key_fields)
         rpdu = yield from self._write_pdu(pdu)
-        logging.debug('rpdu: %s',pprint.pformat(rpdu))
-        return self._format_rpdu(rpdu)
+        return utils.format_rpdu(rpdu)
 
-    def _make_fields(self, tuples):
-        return [self._make_field(t) for t in tuples]
+    def add_index(self, table_name, config):
+        return self.loop.run_until_complete(self._add_index(table_name, config))
 
-    def _make_field(self, t):
-        (name, value) = t
-        field = apollo.Field()
-        field.name = name
-        if isinstance(value, bool):
-            field.boolean = value
-        elif isinstance(value, int):
-            field.int = value
-        elif isinstance(value, (bytes, bytearray)):
-            field.binary = value
-        elif value == None:
-            field.null = None
-        elif isinstance(value, int):
-            field.int = value
-        elif isinstance(value, float):
-            field.float = value
-        elif isinstance(value, str):
-            field.string = value
-        return field
+    def _add_index(self, table_name, config):
+        pdu = self._make_pdu()
+        pdu.add_index.table_name = table_name
+        pdu.add_index.config.extend(utils.make_index_config_list(config))
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def list_tables(self):
+        return self.loop.run_until_complete(self._list_tables())
+
+    def _list_tables(self):
+        pdu = self._make_pdu()
+        pdu.list_tables.SetInParent()
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
 
     def _make_pdu(self):
         pdu = apollo.ApolloPdu()
@@ -136,37 +155,3 @@ class Client:
         else:
             self.cid += 1
         return cid
-
-    def _format_rpdu(self, pdu):
-        if pdu.HasField('response'):
-            return self._format_response(pdu.response)
-        elif pdu.HasField('error'):
-            return self._format_error(pdu.error)
-
-    def _format_response(self, response):
-            if response.HasField('ok'):
-                return 'ok'
-            elif response.HasField('columns'):
-                return self._format_field(response.columns)
-            elif response.HasField('key_columns_pair'):
-                return self._format_kcp(response.key_columns_pair)
-            elif response.HasField('key_columns_list'):
-                return self._format_kcp(response.key_columns_list)
-            elif response.HasField('proplist'):
-                return self._format_field(response.proplist)
-            elif response.HasField('kcp_it'):
-                return self._format_kcp(response.kcp_it)
-            elif response.HasField('postings'):
-                return self._format_postings(response.postings)
-            elif response.HasField('string_list'):
-                return pdu.response.string_list
-
-    def _format_error(self, error):
-        if error.HasField('system'):
-            return ('system', error.system)
-        elif error.HasField('protocol'):
-            return ('protocol', error.protocol)
-        elif error.HasField('transport'):
-            return ('transport', error.transport)
-        elif error.HasField('misc'):
-            return ('misc', error.misc)
