@@ -49,9 +49,7 @@ def make_field(name, value):
     elif isinstance(value, (bytes, bytearray)):
         field.binary = value
     elif value == None:
-        field.null = None
-    elif isinstance(value, int):
-        field.int = value
+        field.null = b''
     elif isinstance(value, float):
         field.double = value
     elif isinstance(value, str):
@@ -66,14 +64,32 @@ def make_index_config(ixcfg):
     index_config.column = ixcfg['column']
     if 'index_options' in ixcfg:
         opts = ixcfg['index_options']
-        index_config.options.char_filter = opts['char_filter']
-        index_config.options.tokenizer = opts['tokenizer']
+        index_config.options.char_filter = opts['char_filter'].value
+        index_config.options.tokenizer = opts['tokenizer'].value
         tf = opts['token_filter']
-        index_config.options.token_filter.transform = tf['transform']
+        index_config.options.token_filter.transform = tf['transform'].value
         index_config.options.token_filter.add.extend(tf['add'])
         index_config.options.token_filter.delete.extend(tf['delete'])
-        index_config.options.token_filter.stats = tf['stats']
+        index_config.options.token_filter.stats = tf['stats'].value
     return index_config
+
+def make_posting_filter(filter):
+    pf = apollo.PostingFilter()
+    pf.sort_by = filter['sort_by'].value
+    # empty bytes denote nil. proto3 defaults to 0 for numeric values
+    # thus, we use bytes to distinguish if 0 is explictly set.
+    pf.start_ts = filter.get('start_ts', False)
+    pf.end_ts = filter.get('end_ts', False)
+    pf.max_postings = filter['max_postings']
+    return pf
+
+def uIntToBinaryDefault(uint):
+    logging.debug('uint %d', uint)
+    if uint:
+        byte_len = (uint.bit_length() + 7) // 8
+        return uint.to_bytes(byte_len, byteorder='big')
+    else:
+        return b''
 
 def format_rpdu(pdu):
     logging.debug('response pdu: %s',pprint.pformat(pdu))
@@ -86,11 +102,11 @@ def format_response(response):
         if response.HasField('ok'):
             return True
         elif response.HasField('columns'):
-            return format_field(response.columns)
+            return format_fields(response.columns.fields)
         elif response.HasField('key_columns_pair'):
             return format_kcp(response.key_columns_pair)
         elif response.HasField('key_columns_list'):
-            return format_kcp(response.key_columns_list)
+            return format_kcl(response.key_columns_list)
         elif response.HasField('proplist'):
             return format_field(response.proplist)
         elif response.HasField('kcp_it'):
@@ -109,3 +125,46 @@ def format_error(error):
         return ('transport', error.transport)
     elif error.HasField('misc'):
         return ('misc', error.misc)
+
+def format_fields(fields):
+    return dict([format_field(f) for f in fields])
+
+def format_field(field):
+    name = field.name
+    value = None
+    if field.HasField('boolean'):
+        value = field.boolean
+    elif field.HasField('int'):
+        value = field.int
+    elif field.HasField('binary'):
+        value = field.binary
+    elif field.HasField('null'):
+        value == None
+    elif field.HasField('double'):
+        value = field.double
+    elif field.HasField('string'):
+        value = field.string
+    return (name, value)
+
+def format_kcp(kcp):
+    return (format_fields(kcp.key), format_fields(kcp.columns))
+
+def format_continuation(cont):
+    if cont.complete:
+        return 'complete'
+    else:
+        return format_fields(cont.key)
+
+def format_kcl(key_columns_list):
+    kcl = [format_kcp(kcp) for kcp in key_columns_list.list]
+    cont = format_continuation(key_columns_list.continuation)
+    return {'key_columns_list': kcl, 'continuation': cont}
+
+def format_postings(postings):
+    return [format_posting(p) for p in postings.list]
+
+def format_posting(posting):
+    return {'key': format_fields(posting.key),
+            'timestamp': posting.timestamp,
+            'frequency': posting.frequency,
+            'position': posting.position}

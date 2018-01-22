@@ -81,6 +81,20 @@ class Client:
         rpdu = yield from self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
+    def write(self, table_name, key, columns):
+        return self.loop.run_until_complete(
+            self._write(table_name, key, columns))
+
+    def _write(self, table_name, key, columns):
+        pdu = self._make_pdu()
+        pdu.write.table_name = table_name
+        key_fields = utils.make_fields(key)
+        pdu.write.key.extend(key_fields)
+        columns_fields = utils.make_fields(columns)
+        pdu.write.columns.extend(columns_fields)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
     def read(self, table_name, key):
         return self.loop.run_until_complete(self._read(table_name, key))
 
@@ -89,6 +103,51 @@ class Client:
         pdu.read.table_name = table_name
         key_fields = utils.make_fields(key)
         pdu.read.key.extend(key_fields)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def index_read(self, table_name, column_name, term, filter):
+        return self.loop.run_until_complete(
+            self._index_read(table_name, column_name, term, filter))
+
+    def _index_read(self, table_name, column_name, term, filter):
+        pdu = self._make_pdu()
+        pdu.index_read.table_name = table_name
+        pdu.index_read.column_name = column_name
+        pdu.index_read.term = term
+        posting_filter = utils.make_posting_filter(filter)
+        pdu.index_read.filter.sort_by = posting_filter.sort_by
+        pdu.index_read.filter.start_ts = posting_filter.start_ts
+        pdu.index_read.filter.end_ts = posting_filter.end_ts
+        pdu.index_read.filter.max_postings = posting_filter.max_postings
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def read_range(self, table_name, start_key, end_key, limit):
+        return self.loop.run_until_complete(
+                self._read_range(table_name, start_key, end_key, limit))
+
+    def _read_range(self, table_name, start_key, end_key, limit):
+        pdu = self._make_pdu()
+        pdu.read_range.table_name = table_name
+        start_key_fields = utils.make_fields(start_key)
+        pdu.read_range.start_key.extend(start_key_fields)
+        end_key_fields = utils.make_fields(end_key)
+        pdu.read_range.end_key.extend(end_key_fields)
+        pdu.read_range.limit = limit
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def read_range_n(self, table_name, start_key, n):
+        return self.loop.run_until_complete(
+                self._read_range_n(table_name, start_key, n))
+
+    def _read_range_n(self, table_name, start_key, n):
+        pdu = self._make_pdu()
+        pdu.read_range_n.table_name = table_name
+        start_key_fields = utils.make_fields(start_key)
+        pdu.read_range_n.start_key.extend(start_key_fields)
+        pdu.read_range_n.n = n
         rpdu = yield from self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
