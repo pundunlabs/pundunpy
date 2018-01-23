@@ -15,20 +15,27 @@ class Client:
         self.port = port
         self.username = user
         self.password = password
-        #self.loop.run_forever()
         self.tid = 0
         self.cid = 0
         self.message_dict = {}
         self.loop = asyncio.get_event_loop()
         (self.reader, self.writer) = self._connect(self.loop)
-        asyncio.ensure_future(self._listener())
+        self.listener_task = asyncio.ensure_future(self._listener())
 
     def __del__(self):
+        if self.loop.is_running():
+            if not self.listener_task.cancelled():
+                self.listener_task.cancel()
+                self._disconnect(self.loop)
+            self.loop.close()
+
+    def cleanup(self):
         logging.info('Client cleanup..')
-        self._disconnect()
+        self.listener_task.cancel()
+        self._disconnect(self.loop)
         self.loop.close()
 
-    #@asyncio.coroutine
+    @asyncio.coroutine
     def _listener(self):
         logging.debug('listener started..')
         while self.loop.is_running():
@@ -42,8 +49,9 @@ class Client:
                 q.put_nowait(data)
                 logging.debug('put q: %s', pprint.pformat(q))
             except:
-                logging.error('Listener Exception: {}'.format(sys.exc_info()[0]))
+                logging.warning('Stop listener: {}'.format(sys.exc_info()[0]))
                 break
+        logging.debug('listener stopped..')
 
     def _connect(self, loop):
         (reader, writer) = scram.connect(self.host, self.port, loop = loop)
@@ -54,9 +62,8 @@ class Client:
         logging.debug('Scrampy Auth response: {}'.format(res))
         return (reader, writer)
 
-    def _disconnect(self):
-        return scram.disconnect(streamwriter = self.writer,
-                                loop = self.loop)
+    def _disconnect(self, loop):
+        return scram.disconnect(streamwriter = self.writer, loop = loop)
 
     def create_table(self, table_name, key_def, options):
         return self.loop.run_until_complete(self._create_table(table_name,
