@@ -45,9 +45,12 @@ class Client:
                 cid_bytes = yield from self.reader.readexactly(2)
                 cid = int.from_bytes(cid_bytes, byteorder='big')
                 data = yield from self.reader.readexactly(length-2)
-                q = self.message_dict[cid]
-                q.put_nowait(data)
-                logging.debug('put q: %s', pprint.pformat(q))
+                q = self.message_dict.get(cid, False)
+                if q:
+                    q.put_nowait(data)
+                    logging.debug('put q: %s', pprint.pformat(q))
+                else:
+                    logging.debug('no waiting q for cid: %d', cid)
             except:
                 logging.warning('Stop listener: {}'.format(sys.exc_info()[0]))
                 break
@@ -311,11 +314,15 @@ class Client:
         self.writer.write(msg)
         q = asyncio.Queue(maxsize = 1, loop=self.loop)
         self.message_dict[cid] = q
-        rdata = yield from q.get()
-        logging.debug('received data: %s', pprint.pformat(rdata))
-        del self.message_dict[cid]
+        coro = asyncio.Task(q.get())
         rpdu = apollo.ApolloPdu()
-        rpdu.ParseFromString(rdata)
+        try:
+            rdata = yield from asyncio.wait_for(coro, timeout=60)
+            logging.debug('received data: %s', pprint.pformat(rdata))
+            rpdu.ParseFromString(rdata)
+        except asyncio.TimeoutError:
+            rpdu.error.transport = 'timeout'
+        del self.message_dict[cid]
         return rpdu
 
     def _get_tid(self):
