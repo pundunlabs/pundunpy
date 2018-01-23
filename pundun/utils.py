@@ -1,6 +1,7 @@
 import logging
 import pprint
 from pundun import apollo_pb2 as apollo
+from pundun import constants as enum
 
 def setup_logging(level = logging.WARNING):
     date_fmt = '%Y-%m-%d %H:%M:%S'
@@ -83,6 +84,22 @@ def make_posting_filter(filter):
     pf.max_postings = filter['max_postings']
     return pf
 
+def make_update_operation_list(uolist):
+    return [make_update_operation(op) for op in uolist]
+
+def make_update_operation(op):
+    update_operation = apollo.UpdateOperation()
+    update_operation.field = op['field']
+    update_instruction = op.get('updateInstruction', {
+            'instruction': enum.Instruction.overwrite
+            })
+    update_operation.update_instruction.instruction = update_instruction['instruction'].value
+    update_operation.update_instruction.threshold = uIntToBinaryDefault(update_instruction.get('threshold', False))
+    update_operation.update_instruction.set_value = uIntToBinaryDefault(update_instruction.get('set_value', False))
+    update_operation.value.int = op['value']
+    update_operation.default_value.int = op.get('default_value', 0)
+    return update_operation
+
 def uIntToBinaryDefault(uint):
     logging.debug('uint %d', uint)
     if uint:
@@ -108,7 +125,7 @@ def format_response(response):
         elif response.HasField('key_columns_list'):
             return format_kcl(response.key_columns_list)
         elif response.HasField('proplist'):
-            return format_field(response.proplist)
+            return format_fields(response.proplist.fields)
         elif response.HasField('kcp_it'):
             return format_kcp_it(response.kcp_it)
         elif response.HasField('postings'):

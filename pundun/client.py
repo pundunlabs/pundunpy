@@ -81,6 +81,35 @@ class Client:
         rpdu = yield from self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
+    def open_table(self, table_name):
+        return self.loop.run_until_complete(self._open_table(table_name))
+
+    def _open_table(self, table_name):
+        pdu = self._make_pdu()
+        pdu.open_table.table_name = table_name
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def close_table(self, table_name):
+        return self.loop.run_until_complete(self._close_table(table_name))
+
+    def _close_table(self, table_name):
+        pdu = self._make_pdu()
+        pdu.close_table.table_name = table_name
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def table_info(self, table_name, attributes = []):
+        return self.loop.run_until_complete(
+            self._table_info(table_name, attributes))
+
+    def _table_info(self, table_name, attributes):
+        pdu = self._make_pdu()
+        pdu.table_info.table_name = table_name
+        pdu.table_info.attributes.extend(attributes)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
     def write(self, table_name, key, columns):
         return self.loop.run_until_complete(
             self._write(table_name, key, columns))
@@ -92,6 +121,31 @@ class Client:
         pdu.write.key.extend(key_fields)
         columns_fields = utils.make_fields(columns)
         pdu.write.columns.extend(columns_fields)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def delete(self, table_name, key):
+        return self.loop.run_until_complete(self._delete(table_name, key))
+
+    def _delete(self, table_name, key):
+        pdu = self._make_pdu()
+        pdu.delete.table_name = table_name
+        key_fields = utils.make_fields(key)
+        pdu.delete.key.extend(key_fields)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def update(self, table_name, key, update_operations):
+        return self.loop.run_until_complete(
+            self._update(table_name, key, update_operations))
+
+    def _update(self, table_name, key, update_operations):
+        pdu = self._make_pdu()
+        pdu.update.table_name = table_name
+        key_fields = utils.make_fields(key)
+        pdu.update.key.extend(key_fields)
+        uol = utils.make_update_operation_list(update_operations)
+        pdu.update.update_operation.extend(uol)
         rpdu = yield from self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
@@ -205,6 +259,17 @@ class Client:
         pdu = self._make_pdu()
         pdu.add_index.table_name = table_name
         pdu.add_index.config.extend(utils.make_index_config_list(config))
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def remove_index(self, table_name, columns):
+        return self.loop.run_until_complete(
+            self._remove_index(table_name, columns))
+
+    def _remove_index(self, table_name, columns):
+        pdu = self._make_pdu()
+        pdu.remove_index.table_name = table_name
+        pdu.remove_index.columns.extend(columns)
         rpdu = yield from self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 

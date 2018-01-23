@@ -50,4 +50,4 @@ class Type(Enum):
 
 class Instruction(Enum):
     increment = 0
-    overwirete = 7
+    overwrite = 7

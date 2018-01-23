@@ -4,6 +4,7 @@ import logging
 from context import pundun
 from pundun import Client
 import unittest
+import pprint
 from pundun import utils
 from pundun import constants as enum
 import time
@@ -68,7 +69,7 @@ class TestPundunConnection(unittest.TestCase):
                  'blank': None,
                  'double': 99.45}
         self.assertTrue(client.write(table_name, key2, data2))
-        #Succesful Read Operations
+        # Succesful Read Operations
         self.assertEqual(client.read(table_name, key1), data1)
         self.assertEqual(client.read(table_name, key2), data2)
         posting_list1 = client.index_read(table_name, 'name', 'Erdem Aksu', {
@@ -89,7 +90,7 @@ class TestPundunConnection(unittest.TestCase):
         read_range_n_res = client.read_range_n(table_name, key2, 2)
         self.assertEqual(read_range_n_res['key_columns_list'],
                          expected_range_res)
-        ##Iterator operations
+        # Iterator operations
         kcp_it2 = client.first(table_name)
         self.assertEqual(kcp_it2['kcp'], (key2, data2))
         kcp1 = client.next(kcp_it2['it'])
@@ -101,6 +102,29 @@ class TestPundunConnection(unittest.TestCase):
         error = client.prev(kcp_it1['it'])
         self.assertEqual(error, ('system', '{error,invalid}'))
         self.assertEqual(client.last(table_name)['kcp'], kcp1)
+        # Update operations
+        up_ops1 = [
+            {'field': 'abc',
+             'update_instruction': {'instruction': enum.Instruction.increment,
+                                    'threshold': 10,
+                                    'set_value': 0},
+             'value': 1,
+             'default_value': 0}
+        ]
+        data1.update({'abc': 1})
+        self.assertEqual(client.update(table_name, key1, up_ops1), data1)
+        up_ops2 = [{'field': 'abc','value': 5}]
+        data2.update({'abc': 5})
+        self.assertEqual(client.update(table_name, key2, up_ops2), data2)
+        # Delete operation
+        self.assertTrue(client.delete(table_name, key1))
+        self.assertTrue(client.delete(table_name, key2))
+        # Table info
+        info = client.table_info(table_name, ['index_on'])
+        logging.debug("table_info:\n%s", pprint.pformat(info))
+        self.assertTrue(client.remove_index(table_name, ['name']))
+        all_info = client.table_info(table_name)
+        logging.debug("table_info:\n%s", pprint.pformat(all_info))
         del client
 
 if __name__ == '__main__':
