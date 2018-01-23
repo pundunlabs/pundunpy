@@ -151,6 +151,53 @@ class Client:
         rpdu = yield from self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
+    def first(self, table_name):
+        return self.loop.run_until_complete(self._first(table_name))
+
+    def _first(self, table_name):
+        pdu = self._make_pdu()
+        pdu.first.table_name = table_name
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def last(self, table_name):
+        return self.loop.run_until_complete(self._last(table_name))
+
+    def _last(self, table_name):
+        pdu = self._make_pdu()
+        pdu.last.table_name = table_name
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def seek(self, table_name, key):
+        return self.loop.run_until_complete(self._seek(table_name, key))
+
+    def _seek(self, table_name, key):
+        pdu = self._make_pdu()
+        pdu.seek.table_name = table_name
+        key_fields = utils.make_fields(key)
+        pdu.seek.key.extend(key_fields)
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def next(self, it):
+        return self.loop.run_until_complete(self._next(it))
+
+    def _next(self, it):
+        pdu = self._make_pdu()
+        pdu.next.it = it
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
+    def prev(self, it):
+        return self.loop.run_until_complete(self._prev(it))
+
+    def _prev(self, it):
+        pdu = self._make_pdu()
+        pdu.prev.it = it
+        rpdu = yield from self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
     def add_index(self, table_name, config):
         return self.loop.run_until_complete(self._add_index(table_name, config))
 

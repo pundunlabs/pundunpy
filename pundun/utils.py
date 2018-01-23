@@ -110,7 +110,7 @@ def format_response(response):
         elif response.HasField('proplist'):
             return format_field(response.proplist)
         elif response.HasField('kcp_it'):
-            return format_kcp(response.kcp_it)
+            return format_kcp_it(response.kcp_it)
         elif response.HasField('postings'):
             return format_postings(response.postings)
         elif response.HasField('string_list'):
@@ -148,6 +148,10 @@ def format_field(field):
 
 def format_kcp(kcp):
     return (format_fields(kcp.key), format_fields(kcp.columns))
+
+def format_kcp_it(kcp_it):
+    return {'kcp': format_kcp(kcp_it.key_columns_pair),
+            'it': kcp_it.it}
 
 def format_continuation(cont):
     if cont.complete:

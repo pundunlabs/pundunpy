@@ -68,6 +68,7 @@ class TestPundunConnection(unittest.TestCase):
                  'blank': None,
                  'double': 99.45}
         self.assertTrue(client.write(table_name, key2, data2))
+        #Succesful Read Operations
         self.assertEqual(client.read(table_name, key1), data1)
         self.assertEqual(client.read(table_name, key2), data2)
         posting_list1 = client.index_read(table_name, 'name', 'Erdem Aksu', {
@@ -88,6 +89,18 @@ class TestPundunConnection(unittest.TestCase):
         read_range_n_res = client.read_range_n(table_name, key2, 2)
         self.assertEqual(read_range_n_res['key_columns_list'],
                          expected_range_res)
+        ##Iterator operations
+        kcp_it2 = client.first(table_name)
+        self.assertEqual(kcp_it2['kcp'], (key2, data2))
+        kcp1 = client.next(kcp_it2['it'])
+        self.assertEqual(kcp1, (key1, data1))
+        kcp_it1 = client.seek(table_name, key1)
+        self.assertEqual(kcp_it1['kcp'], kcp1)
+        kcp2 = client.prev(kcp_it1['it'])
+        self.assertEqual(kcp2, (key2, data2))
+        error = client.prev(kcp_it1['it'])
+        self.assertEqual(error, ('system', '{error,invalid}'))
+        self.assertEqual(client.last(table_name)['kcp'], kcp1)
         del client
 
 if __name__ == '__main__':
