@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='apollo.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0c\x61pollo.proto\"\x89\x06\n\tApolloPdu\x12\x19\n\x07version\x18\x01 \x01(\x0b\x32\x08.Version\x12\x16\n\x0etransaction_id\x18\x02 \x01(\r\x12\x17\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x06.ErrorH\x00\x12\x1d\n\x08response\x18\x04 \x01(\x0b\x32\t.ResponseH\x00\x12$\n\x0c\x63reate_table\x18\x05 \x01(\x0b\x32\x0c.CreateTableH\x00\x12$\n\x0c\x64\x65lete_table\x18\x06 \x01(\x0b\x32\x0c.DeleteTableH\x00\x12 \n\nopen_table\x18\x07 \x01(\x0b\x32\n.OpenTableH\x00\x12\"\n\x0b\x63lose_table\x18\x08 \x01(\x0b\x32\x0b.CloseTableH\x00\x12 \n\ntable_info\x18\t \x01(\x0b\x32\n.TableInfoH\x00\x12\x15\n\x04read\x18\n \x01(\x0b\x32\x05.ReadH\x00\x12\x17\n\x05write\x18\x0b \x01(\x0b\x32\x06.WriteH\x00\x12\x19\n\x06update\x18\x0c \x01(\x0b\x32\x07.UpdateH\x00\x12\x19\n\x06\x64\x65lete\x18\r \x01(\x0b\x32\x07.DeleteH\x00\x12 \n\nread_range\x18\x0e \x01(\x0b\x32\n.ReadRangeH\x00\x12#\n\x0cread_range_n\x18\x0f \x01(\x0b\x32\x0b.ReadRangeNH\x00\x12\"\n\x0b\x62\x61tch_write\x18\x10 \x01(\x0b\x32\x0b.BatchWriteH\x00\x12\x17\n\x05\x66irst\x18\x11 \x01(\x0b\x32\x06.FirstH\x00\x12\x15\n\x04last\x18\x12 \x01(\x0b\x32\x05.LastH\x00\x12\x15\n\x04seek\x18\x13 \x01(\x0b\x32\x05.SeekH\x00\x12\x15\n\x04next\x18\x14 \x01(\x0b\x32\x05.NextH\x00\x12\x15\n\x04prev\x18\x15 \x01(\x0b\x32\x05.PrevH\x00\x12\x1e\n\tadd_index\x18\x16 \x01(\x0b\x32\t.AddIndexH\x00\x12$\n\x0cremove_index\x18\x17 \x01(\x0b\x32\x0c.RemoveIndexH\x00\x12 \n\nindex_read\x18\x18 \x01(\x0b\x32\n.IndexReadH\x00\x12\"\n\x0blist_tables\x18\x19 \x01(\x0b\x32\x0b.ListTablesH\x00\x42\x0b\n\tprocedure\"b\n\nBatchWrite\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1b\n\x0b\x64\x65lete_keys\x18\x02 \x03(\x0b\x32\x06.Field\x12#\n\nwrite_kvps\x18\x03 \x03(\x0b\x32\x0f.KeyColumnsPair\" \n\nCloseTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"T\n\x0b\x43reateTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0c\n\x04keys\x18\x02 \x03(\t\x12#\n\rtable_options\x18\x03 \x03(\x0b\x32\x0c.TableOption\"1\n\x06\x44\x65lete\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"!\n\x0b\x44\x65leteTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"[\n\x05\x45rror\x12\x13\n\ttransport\x18\x01 \x01(\tH\x00\x12\x12\n\x08protocol\x18\x02 \x01(\tH\x00\x12\x10\n\x06system\x18\x03 \x01(\tH\x00\x12\x0e\n\x04misc\x18\x04 \x01(\tH\x00\x42\x07\n\x05\x63\x61use\"\x1f\n\tOpenTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Read\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"b\n\tReadRange\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x65nd_key\x18\x03 \x03(\x0b\x32\x06.Field\x12\r\n\x05limit\x18\x04 \x01(\r\"F\n\nReadRangeN\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\t\n\x01n\x18\x03 \x01(\r\"\xb0\x02\n\x08Response\x12\x0c\n\x02ok\x18\x01 \x01(\tH\x00\x12\x1a\n\x07\x63olumns\x18\x02 \x01(\x0b\x32\x07.FieldsH\x00\x12+\n\x10key_columns_pair\x18\x03 \x01(\x0b\x32\x0f.KeyColumnsPairH\x00\x12+\n\x10key_columns_list\x18\x04 \x01(\x0b\x32\x0f.KeyColumnsListH\x00\x12\x1b\n\x08proplist\x18\x05 \x01(\x0b\x32\x07.FieldsH\x00\x12\x18\n\x06kcp_it\x18\x06 \x01(\x0b\x32\x06.KcpItH\x00\x12\x1d\n\x08postings\x18\x07 \x01(\x0b\x32\t.PostingsH\x00\x12\"\n\x0bstring_list\x18\x08 \x01(\x0b\x32\x0b.FieldNamesH\x00\x12\x1c\n\x14more_data_to_be_sent\x18\t \x01(\x08\x42\x08\n\x06result\"3\n\tTableInfo\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"]\n\x06Update\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12*\n\x10update_operation\x18\x03 \x03(\x0b\x32\x10.UpdateOperation\"I\n\x05Write\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x03 \x03(\x0b\x32\x06.Field\"\x1b\n\x05\x46irst\x12\x12\n\ntable_name\x18\x01 \x01(\t\"\x1a\n\x04Last\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Seek\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"\x12\n\x04Next\x12\n\n\x02it\x18\x01 \x01(\x0c\"\x12\n\x04Prev\x12\n\n\x02it\x18\x01 \x01(\x0c\"<\n\x08\x41\x64\x64Index\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1c\n\x06\x63onfig\x18\x02 \x03(\x0b\x32\x0c.IndexConfig\"2\n\x0bRemoveIndex\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0f\n\x07\x63olumns\x18\x02 \x03(\t\"b\n\tIndexRead\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\x12\x1e\n\x06\x66ilter\x18\x04 \x01(\x0b\x32\x0e.PostingFilter\"\x0c\n\nListTables\"5\n\x0c\x43ontinuation\x12\x10\n\x08\x63omplete\x18\x01 \x01(\x08\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"\x86\x01\n\x05\x46ield\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\x07\x62oolean\x18\x02 \x01(\x08H\x00\x12\r\n\x03int\x18\x03 \x01(\x03H\x00\x12\x10\n\x06\x62inary\x18\x04 \x01(\x0cH\x00\x12\x0e\n\x04null\x18\x05 \x01(\x0cH\x00\x12\x10\n\x06\x64ouble\x18\x06 \x01(\x01H\x00\x12\x10\n\x06string\x18\x07 \x01(\tH\x00\x42\x07\n\x05value\"!\n\nFieldNames\x12\x13\n\x0b\x66ield_names\x18\x01 \x03(\t\" \n\x06\x46ields\x12\x16\n\x06\x66ields\x18\x01 \x03(\x0b\x32\x06.Field\"=\n\x0bIndexConfig\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x1e\n\x07options\x18\x02 \x01(\x0b\x32\r.IndexOptions\"s\n\x0cIndexOptions\x12 \n\x0b\x63har_filter\x18\x01 \x01(\x0e\x32\x0b.CharFilter\x12\x1d\n\ttokenizer\x18\x02 \x01(\x0e\x32\n.Tokenizer\x12\"\n\x0ctoken_filter\x18\x03 \x01(\x0b\x32\x0c.TokenFilter\">\n\x0eKeyColumnsPair\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x02 \x03(\x0b\x32\x06.Field\"T\n\x0eKeyColumnsList\x12\x1d\n\x04list\x18\x01 \x03(\x0b\x32\x0f.KeyColumnsPair\x12#\n\x0c\x63ontinuation\x18\x02 \x01(\x0b\x32\r.Continuation\"V\n\x07Posting\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x11\n\tfrequency\x18\x03 \x01(\r\x12\x10\n\x08position\x18\x04 \x01(\r\"\"\n\x08Postings\x12\x16\n\x04list\x18\x01 \x03(\x0b\x32\x08.Posting\"a\n\rPostingFilter\x12\x18\n\x07sort_by\x18\x01 \x01(\x0e\x32\x07.SortBy\x12\x10\n\x08start_ts\x18\x02 \x01(\r\x12\x0e\n\x06\x65nd_ts\x18\x03 \x01(\r\x12\x14\n\x0cmax_postings\x18\x04 \x01(\r\">\n\x05KcpIt\x12)\n\x10key_columns_pair\x18\x01 \x01(\x0b\x32\x0f.KeyColumnsPair\x12\n\n\x02it\x18\x02 \x01(\x0c\"\x85\x03\n\x0bTableOption\x12\x15\n\x04type\x18\x01 \x01(\x0e\x32\x05.TypeH\x00\x12 \n\ndata_model\x18\x02 \x01(\x0e\x32\n.DataModelH\x00\x12\x1b\n\x07wrapper\x18\x03 \x01(\x0b\x32\x08.WrapperH\x00\x12\x1f\n\x0bmem_wrapper\x18\x04 \x01(\x0b\x32\x08.WrapperH\x00\x12\x13\n\x03tda\x18\x05 \x01(\x0b\x32\x04.TdaH\x00\x12!\n\ncomparator\x18\x06 \x01(\x0e\x32\x0b.ComparatorH\x00\x12\x15\n\x0btime_series\x18\x07 \x01(\x08H\x00\x12\x17\n\rnum_of_shards\x18\x08 \x01(\rH\x00\x12\x15\n\x0b\x64istributed\x18\t \x01(\x08H\x00\x12\x1c\n\x12replication_factor\x18\n \x01(\rH\x00\x12\"\n\x0bhash_exlude\x18\x0b \x01(\x0b\x32\x0b.FieldNamesH\x00\x12(\n\x0ehashing_method\x18\x0c \x01(\x0e\x32\x0e.HashingMethodH\x00\x12\r\n\x03ttl\x18\r \x01(\rH\x00\x42\x05\n\x03opt\"\x93\x01\n\x03Tda\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x10\n\x08ts_field\x18\x05 \x01(\t\x12\x1c\n\tprecision\x18\x06 \x01(\x0e\x32\t.TimeUnitB\r\n\x0btime_margin\"j\n\x0bTokenFilter\x12\"\n\ttransform\x18\x01 \x01(\x0e\x32\x0f.TokenTransform\x12\x0b\n\x03\x61\x64\x64\x18\x02 \x03(\t\x12\x0e\n\x06\x64\x65lete\x18\x03 \x03(\t\x12\x1a\n\x05stats\x18\x04 \x01(\x0e\x32\x0b.TokenStats\"\x9b\x01\n\x11UpdateInstruction\x12\x33\n\x0binstruction\x18\x08 \x01(\x0e\x32\x1e.UpdateInstruction.Instruction\x12\x11\n\tthreshold\x18\x0e \x01(\x0c\x12\x11\n\tset_value\x18\x0f \x01(\x0c\"+\n\x0bInstruction\x12\r\n\tINCREMENT\x10\x00\x12\r\n\tOVERWRITE\x10\x07\"\x86\x01\n\x0fUpdateOperation\x12\r\n\x05\x66ield\x18\x01 \x01(\t\x12.\n\x12update_instruction\x18\x02 \x01(\x0b\x32\x12.UpdateInstruction\x12\x15\n\x05value\x18\x03 \x01(\x0b\x32\x06.Value\x12\x1d\n\rdefault_value\x18\x04 \x01(\x0b\x32\x06.Value\"x\n\x05Value\x12\x11\n\x07\x62oolean\x18\x01 \x01(\x08H\x00\x12\r\n\x03int\x18\x02 \x01(\x03H\x00\x12\x10\n\x06\x62inary\x18\x03 \x01(\x0cH\x00\x12\x0e\n\x04null\x18\x04 \x01(\x0cH\x00\x12\x10\n\x06\x64ouble\x18\x05 \x01(\x01H\x00\x12\x10\n\x06string\x18\x06 \x01(\tH\x00\x42\x07\n\x05value\"\'\n\x07Version\x12\r\n\x05major\x18\x01 \x01(\r\x12\r\n\x05minor\x18\x02 \x01(\r\"\xa0\x01\n\x07Wrapper\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x13\n\tmegabytes\x18\x05 \x01(\rH\x01\x12\x13\n\tgigabytes\x18\x06 \x01(\rH\x01\x42\r\n\x0btime_marginB\r\n\x0bsize_margin*2\n\nCharFilter\x12\x07\n\x03NFC\x10\x00\x12\x07\n\x03NFD\x10\x01\x12\x08\n\x04NFKC\x10\x02\x12\x08\n\x04NFKD\x10\x03*+\n\nComparator\x12\x0e\n\nDESCENDING\x10\x00\x12\r\n\tASCENDING\x10\x01*\'\n\tDataModel\x12\x06\n\x02KV\x10\x00\x12\t\n\x05\x41RRAY\x10\x01\x12\x07\n\x03MAP\x10\x02*N\n\rHashingMethod\x12\x10\n\x0cVIRTUALNODES\x10\x00\x12\x0e\n\nCONSISTENT\x10\x01\x12\x0b\n\x07UNIFORM\x10\x02\x12\x0e\n\nRENDEZVOUS\x10\x03*&\n\x06SortBy\x12\r\n\tRELEVANCE\x10\x00\x12\r\n\tTIMESTAMP\x10\x01*H\n\x08TimeUnit\x12\n\n\x06SECOND\x10\x00\x12\x0f\n\x0bMILLISECOND\x10\x01\x12\x0f\n\x0bMICROSECOND\x10\x02\x12\x0e\n\nNANOSECOND\x10\x03*(\n\tTokenizer\x12\x1b\n\x17UNICODE_WORD_BOUNDARIES\x10\x00*B\n\nTokenStats\x12\x0b\n\x07NOSTATS\x10\x00\x12\n\n\x06UNIQUE\x10\x01\x12\r\n\tFREQUENCY\x10\x02\x12\x0c\n\x08POSITION\x10\x03*<\n\x0eTokenTransform\x12\r\n\tLOWERCASE\x10\x00\x12\r\n\tUPPERCASE\x10\x01\x12\x0c\n\x08\x43\x41SEFOLD\x10\x02*~\n\x04Type\x12\x0b\n\x07LEVELDB\x10\x00\x12\x0e\n\nMEMLEVELDB\x10\x01\x12\x12\n\x0eLEVELDBWRAPPED\x10\x02\x12\x15\n\x11MEMLEVELDBWRAPPED\x10\x03\x12\x0e\n\nLEVELDBTDA\x10\x04\x12\x11\n\rMEMLEVELDBTDA\x10\x05\x12\x0b\n\x07ROCKSDB\x10\x06\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x61pollo.proto\"\x89\x06\n\tApolloPdu\x12\x19\n\x07version\x18\x01 \x01(\x0b\x32\x08.Version\x12\x16\n\x0etransaction_id\x18\x02 \x01(\r\x12\x17\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x06.ErrorH\x00\x12\x1d\n\x08response\x18\x04 \x01(\x0b\x32\t.ResponseH\x00\x12$\n\x0c\x63reate_table\x18\x05 \x01(\x0b\x32\x0c.CreateTableH\x00\x12$\n\x0c\x64\x65lete_table\x18\x06 \x01(\x0b\x32\x0c.DeleteTableH\x00\x12 \n\nopen_table\x18\x07 \x01(\x0b\x32\n.OpenTableH\x00\x12\"\n\x0b\x63lose_table\x18\x08 \x01(\x0b\x32\x0b.CloseTableH\x00\x12 \n\ntable_info\x18\t \x01(\x0b\x32\n.TableInfoH\x00\x12\x15\n\x04read\x18\n \x01(\x0b\x32\x05.ReadH\x00\x12\x17\n\x05write\x18\x0b \x01(\x0b\x32\x06.WriteH\x00\x12\x19\n\x06update\x18\x0c \x01(\x0b\x32\x07.UpdateH\x00\x12\x19\n\x06\x64\x65lete\x18\r \x01(\x0b\x32\x07.DeleteH\x00\x12 \n\nread_range\x18\x0e \x01(\x0b\x32\n.ReadRangeH\x00\x12#\n\x0cread_range_n\x18\x0f \x01(\x0b\x32\x0b.ReadRangeNH\x00\x12\"\n\x0b\x62\x61tch_write\x18\x10 \x01(\x0b\x32\x0b.BatchWriteH\x00\x12\x17\n\x05\x66irst\x18\x11 \x01(\x0b\x32\x06.FirstH\x00\x12\x15\n\x04last\x18\x12 \x01(\x0b\x32\x05.LastH\x00\x12\x15\n\x04seek\x18\x13 \x01(\x0b\x32\x05.SeekH\x00\x12\x15\n\x04next\x18\x14 \x01(\x0b\x32\x05.NextH\x00\x12\x15\n\x04prev\x18\x15 \x01(\x0b\x32\x05.PrevH\x00\x12\x1e\n\tadd_index\x18\x16 \x01(\x0b\x32\t.AddIndexH\x00\x12$\n\x0cremove_index\x18\x17 \x01(\x0b\x32\x0c.RemoveIndexH\x00\x12 \n\nindex_read\x18\x18 \x01(\x0b\x32\n.IndexReadH\x00\x12\"\n\x0blist_tables\x18\x19 \x01(\x0b\x32\x0b.ListTablesH\x00\x42\x0b\n\tprocedure\"b\n\nBatchWrite\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1b\n\x0b\x64\x65lete_keys\x18\x02 \x03(\x0b\x32\x06.Field\x12#\n\nwrite_kvps\x18\x03 \x03(\x0b\x32\x0f.KeyColumnsPair\" \n\nCloseTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"T\n\x0b\x43reateTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0c\n\x04keys\x18\x02 \x03(\t\x12#\n\rtable_options\x18\x03 \x03(\x0b\x32\x0c.TableOption\"1\n\x06\x44\x65lete\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"!\n\x0b\x44\x65leteTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"[\n\x05\x45rror\x12\x13\n\ttransport\x18\x01 \x01(\tH\x00\x12\x12\n\x08protocol\x18\x02 \x01(\tH\x00\x12\x10\n\x06system\x18\x03 \x01(\tH\x00\x12\x0e\n\x04misc\x18\x04 \x01(\tH\x00\x42\x07\n\x05\x63\x61use\"\x1f\n\tOpenTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Read\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"b\n\tReadRange\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x65nd_key\x18\x03 \x03(\x0b\x32\x06.Field\x12\r\n\x05limit\x18\x04 \x01(\r\"F\n\nReadRangeN\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\t\n\x01n\x18\x03 \x01(\r\"\xb0\x02\n\x08Response\x12\x0c\n\x02ok\x18\x01 \x01(\tH\x00\x12\x1a\n\x07\x63olumns\x18\x02 \x01(\x0b\x32\x07.FieldsH\x00\x12+\n\x10key_columns_pair\x18\x03 \x01(\x0b\x32\x0f.KeyColumnsPairH\x00\x12+\n\x10key_columns_list\x18\x04 \x01(\x0b\x32\x0f.KeyColumnsListH\x00\x12\x1b\n\x08proplist\x18\x05 \x01(\x0b\x32\x07.FieldsH\x00\x12\x18\n\x06kcp_it\x18\x06 \x01(\x0b\x32\x06.KcpItH\x00\x12\x1d\n\x08postings\x18\x07 \x01(\x0b\x32\t.PostingsH\x00\x12\"\n\x0bstring_list\x18\x08 \x01(\x0b\x32\x0b.FieldNamesH\x00\x12\x1c\n\x14more_data_to_be_sent\x18\t \x01(\x08\x42\x08\n\x06result\"3\n\tTableInfo\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"]\n\x06Update\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12*\n\x10update_operation\x18\x03 \x03(\x0b\x32\x10.UpdateOperation\"I\n\x05Write\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x03 \x03(\x0b\x32\x06.Field\"\x1b\n\x05\x46irst\x12\x12\n\ntable_name\x18\x01 \x01(\t\"\x1a\n\x04Last\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Seek\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"\x12\n\x04Next\x12\n\n\x02it\x18\x01 \x01(\x0c\"\x12\n\x04Prev\x12\n\n\x02it\x18\x01 \x01(\x0c\"<\n\x08\x41\x64\x64Index\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1c\n\x06\x63onfig\x18\x02 \x03(\x0b\x32\x0c.IndexConfig\"2\n\x0bRemoveIndex\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0f\n\x07\x63olumns\x18\x02 \x03(\t\"b\n\tIndexRead\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\x12\x1e\n\x06\x66ilter\x18\x04 \x01(\x0b\x32\x0e.PostingFilter\"\x0c\n\nListTables\"5\n\x0c\x43ontinuation\x12\x10\n\x08\x63omplete\x18\x01 \x01(\x08\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\",\n\x05\x46ield\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x05value\x18\x02 \x01(\x0b\x32\x06.Value\"!\n\nFieldNames\x12\x13\n\x0b\x66ield_names\x18\x01 \x03(\t\" \n\x06\x46ields\x12\x16\n\x06\x66ields\x18\x01 \x03(\x0b\x32\x06.Field\"=\n\x0bIndexConfig\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x1e\n\x07options\x18\x02 \x01(\x0b\x32\r.IndexOptions\"s\n\x0cIndexOptions\x12 \n\x0b\x63har_filter\x18\x01 \x01(\x0e\x32\x0b.CharFilter\x12\x1d\n\ttokenizer\x18\x02 \x01(\x0e\x32\n.Tokenizer\x12\"\n\x0ctoken_filter\x18\x03 \x01(\x0b\x32\x0c.TokenFilter\">\n\x0eKeyColumnsPair\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x02 \x03(\x0b\x32\x06.Field\"T\n\x0eKeyColumnsList\x12\x1d\n\x04list\x18\x01 \x03(\x0b\x32\x0f.KeyColumnsPair\x12#\n\x0c\x63ontinuation\x18\x02 \x01(\x0b\x32\r.Continuation\"V\n\x07Posting\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x11\n\tfrequency\x18\x03 \x01(\r\x12\x10\n\x08position\x18\x04 \x01(\r\"\"\n\x08Postings\x12\x16\n\x04list\x18\x01 \x03(\x0b\x32\x08.Posting\"a\n\rPostingFilter\x12\x18\n\x07sort_by\x18\x01 \x01(\x0e\x32\x07.SortBy\x12\x10\n\x08start_ts\x18\x02 \x01(\x0c\x12\x0e\n\x06\x65nd_ts\x18\x03 \x01(\x0c\x12\x14\n\x0cmax_postings\x18\x04 \x01(\r\">\n\x05KcpIt\x12)\n\x10key_columns_pair\x18\x01 \x01(\x0b\x32\x0f.KeyColumnsPair\x12\n\n\x02it\x18\x02 \x01(\x0c\"#\n\tListValue\x12\x16\n\x06values\x18\x01 \x03(\x0b\x32\x06.Value\"h\n\x08MapValue\x12%\n\x06values\x18\x01 \x03(\x0b\x32\x15.MapValue.ValuesEntry\x1a\x35\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x15\n\x05value\x18\x02 \x01(\x0b\x32\x06.Value:\x02\x38\x01\"\x85\x03\n\x0bTableOption\x12\x15\n\x04type\x18\x01 \x01(\x0e\x32\x05.TypeH\x00\x12 \n\ndata_model\x18\x02 \x01(\x0e\x32\n.DataModelH\x00\x12\x1b\n\x07wrapper\x18\x03 \x01(\x0b\x32\x08.WrapperH\x00\x12\x1f\n\x0bmem_wrapper\x18\x04 \x01(\x0b\x32\x08.WrapperH\x00\x12\x13\n\x03tda\x18\x05 \x01(\x0b\x32\x04.TdaH\x00\x12!\n\ncomparator\x18\x06 \x01(\x0e\x32\x0b.ComparatorH\x00\x12\x15\n\x0btime_series\x18\x07 \x01(\x08H\x00\x12\x17\n\rnum_of_shards\x18\x08 \x01(\rH\x00\x12\x15\n\x0b\x64istributed\x18\t \x01(\x08H\x00\x12\x1c\n\x12replication_factor\x18\n \x01(\rH\x00\x12\"\n\x0bhash_exlude\x18\x0b \x01(\x0b\x32\x0b.FieldNamesH\x00\x12(\n\x0ehashing_method\x18\x0c \x01(\x0e\x32\x0e.HashingMethodH\x00\x12\r\n\x03ttl\x18\r \x01(\rH\x00\x42\x05\n\x03opt\"\x93\x01\n\x03Tda\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x10\n\x08ts_field\x18\x05 \x01(\t\x12\x1c\n\tprecision\x18\x06 \x01(\x0e\x32\t.TimeUnitB\r\n\x0btime_margin\"j\n\x0bTokenFilter\x12\"\n\ttransform\x18\x01 \x01(\x0e\x32\x0f.TokenTransform\x12\x0b\n\x03\x61\x64\x64\x18\x02 \x03(\t\x12\x0e\n\x06\x64\x65lete\x18\x03 \x03(\t\x12\x1a\n\x05stats\x18\x04 \x01(\x0e\x32\x0b.TokenStats\"\x9b\x01\n\x11UpdateInstruction\x12\x33\n\x0binstruction\x18\x08 \x01(\x0e\x32\x1e.UpdateInstruction.Instruction\x12\x11\n\tthreshold\x18\x0e \x01(\x0c\x12\x11\n\tset_value\x18\x0f \x01(\x0c\"+\n\x0bInstruction\x12\r\n\tINCREMENT\x10\x00\x12\r\n\tOVERWRITE\x10\x07\"\x86\x01\n\x0fUpdateOperation\x12\r\n\x05\x66ield\x18\x01 \x01(\t\x12.\n\x12update_instruction\x18\x02 \x01(\x0b\x32\x12.UpdateInstruction\x12\x15\n\x05value\x18\x03 \x01(\x0b\x32\x06.Value\x12\x1d\n\rdefault_value\x18\x04 \x01(\x0b\x32\x06.Value\"\xad\x01\n\x05Value\x12\x11\n\x07\x62oolean\x18\x01 \x01(\x08H\x00\x12\r\n\x03int\x18\x02 \x01(\x03H\x00\x12\x10\n\x06\x62inary\x18\x03 \x01(\x0cH\x00\x12\x0e\n\x04null\x18\x04 \x01(\x0cH\x00\x12\x10\n\x06\x64ouble\x18\x05 \x01(\x01H\x00\x12\x10\n\x06string\x18\x06 \x01(\tH\x00\x12\x1a\n\x04list\x18\x07 \x01(\x0b\x32\n.ListValueH\x00\x12\x18\n\x03map\x18\x08 \x01(\x0b\x32\t.MapValueH\x00\x42\x06\n\x04type\"\'\n\x07Version\x12\r\n\x05major\x18\x01 \x01(\r\x12\r\n\x05minor\x18\x02 \x01(\r\"\xa0\x01\n\x07Wrapper\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x13\n\tmegabytes\x18\x05 \x01(\rH\x01\x12\x13\n\tgigabytes\x18\x06 \x01(\rH\x01\x42\r\n\x0btime_marginB\r\n\x0bsize_margin*2\n\nCharFilter\x12\x07\n\x03NFC\x10\x00\x12\x07\n\x03NFD\x10\x01\x12\x08\n\x04NFKC\x10\x02\x12\x08\n\x04NFKD\x10\x03*+\n\nComparator\x12\x0e\n\nDESCENDING\x10\x00\x12\r\n\tASCENDING\x10\x01*\'\n\tDataModel\x12\x06\n\x02KV\x10\x00\x12\t\n\x05\x41RRAY\x10\x01\x12\x07\n\x03MAP\x10\x02*N\n\rHashingMethod\x12\x10\n\x0cVIRTUALNODES\x10\x00\x12\x0e\n\nCONSISTENT\x10\x01\x12\x0b\n\x07UNIFORM\x10\x02\x12\x0e\n\nRENDEZVOUS\x10\x03*&\n\x06SortBy\x12\r\n\tRELEVANCE\x10\x00\x12\r\n\tTIMESTAMP\x10\x01*H\n\x08TimeUnit\x12\n\n\x06SECOND\x10\x00\x12\x0f\n\x0bMILLISECOND\x10\x01\x12\x0f\n\x0bMICROSECOND\x10\x02\x12\x0e\n\nNANOSECOND\x10\x03*(\n\tTokenizer\x12\x1b\n\x17UNICODE_WORD_BOUNDARIES\x10\x00*B\n\nTokenStats\x12\x0b\n\x07NOSTATS\x10\x00\x12\n\n\x06UNIQUE\x10\x01\x12\r\n\tFREQUENCY\x10\x02\x12\x0c\n\x08POSITION\x10\x03*<\n\x0eTokenTransform\x12\r\n\tLOWERCASE\x10\x00\x12\r\n\tUPPERCASE\x10\x01\x12\x0c\n\x08\x43\x41SEFOLD\x10\x02*~\n\x04Type\x12\x0b\n\x07LEVELDB\x10\x00\x12\x0e\n\nMEMLEVELDB\x10\x01\x12\x12\n\x0eLEVELDBWRAPPED\x10\x02\x12\x15\n\x11MEMLEVELDBWRAPPED\x10\x03\x12\x0e\n\nLEVELDBTDA\x10\x04\x12\x11\n\rMEMLEVELDBTDA\x10\x05\x12\x0b\n\x07ROCKSDB\x10\x06\x62\x06proto3')
 )
 
 _CHARFILTER = _descriptor.EnumDescriptor(
@@ -48,8 +48,8 @@ _CHARFILTER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4502,
-  serialized_end=4552,
+  serialized_start=4608,
+  serialized_end=4658,
 )
 _sym_db.RegisterEnumDescriptor(_CHARFILTER)
 
@@ -71,8 +71,8 @@ _COMPARATOR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4554,
-  serialized_end=4597,
+  serialized_start=4660,
+  serialized_end=4703,
 )
 _sym_db.RegisterEnumDescriptor(_COMPARATOR)
 
@@ -98,8 +98,8 @@ _DATAMODEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4599,
-  serialized_end=4638,
+  serialized_start=4705,
+  serialized_end=4744,
 )
 _sym_db.RegisterEnumDescriptor(_DATAMODEL)
 
@@ -129,8 +129,8 @@ _HASHINGMETHOD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4640,
-  serialized_end=4718,
+  serialized_start=4746,
+  serialized_end=4824,
 )
 _sym_db.RegisterEnumDescriptor(_HASHINGMETHOD)
 
@@ -152,8 +152,8 @@ _SORTBY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4720,
-  serialized_end=4758,
+  serialized_start=4826,
+  serialized_end=4864,
 )
 _sym_db.RegisterEnumDescriptor(_SORTBY)
 
@@ -183,8 +183,8 @@ _TIMEUNIT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4760,
-  serialized_end=4832,
+  serialized_start=4866,
+  serialized_end=4938,
 )
 _sym_db.RegisterEnumDescriptor(_TIMEUNIT)
 
@@ -202,8 +202,8 @@ _TOKENIZER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4834,
-  serialized_end=4874,
+  serialized_start=4940,
+  serialized_end=4980,
 )
 _sym_db.RegisterEnumDescriptor(_TOKENIZER)
 
@@ -233,8 +233,8 @@ _TOKENSTATS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4876,
-  serialized_end=4942,
+  serialized_start=4982,
+  serialized_end=5048,
 )
 _sym_db.RegisterEnumDescriptor(_TOKENSTATS)
 
@@ -260,8 +260,8 @@ _TOKENTRANSFORM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4944,
-  serialized_end=5004,
+  serialized_start=5050,
+  serialized_end=5110,
 )
 _sym_db.RegisterEnumDescriptor(_TOKENTRANSFORM)
 
@@ -303,8 +303,8 @@ _TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=5006,
-  serialized_end=5132,
+  serialized_start=5112,
+  serialized_end=5238,
 )
 _sym_db.RegisterEnumDescriptor(_TYPE)
 
@@ -362,8 +362,8 @@ _UPDATEINSTRUCTION_INSTRUCTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=3994,
-  serialized_end=4037,
+  serialized_start=4046,
+  serialized_end=4089,
 )
 _sym_db.RegisterEnumDescriptor(_UPDATEINSTRUCTION_INSTRUCTION)
 
@@ -1566,44 +1566,9 @@ _FIELD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='boolean', full_name='Field.boolean', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='int', full_name='Field.int', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='binary', full_name='Field.binary', index=3,
-      number=4, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='null', full_name='Field.null', index=4,
-      number=5, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='double', full_name='Field.double', index=5,
-      number=6, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='string', full_name='Field.string', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='value', full_name='Field.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1618,12 +1583,9 @@ _FIELD = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
-    _descriptor.OneofDescriptor(
-      name='value', full_name='Field.value',
-      index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2409,
-  serialized_end=2543,
+  serialized_start=2408,
+  serialized_end=2452,
 )
 
 
@@ -1653,8 +1615,8 @@ _FIELDNAMES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2545,
-  serialized_end=2578,
+  serialized_start=2454,
+  serialized_end=2487,
 )
 
 
@@ -1684,8 +1646,8 @@ _FIELDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2580,
-  serialized_end=2612,
+  serialized_start=2489,
+  serialized_end=2521,
 )
 
 
@@ -1722,8 +1684,8 @@ _INDEXCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2614,
-  serialized_end=2675,
+  serialized_start=2523,
+  serialized_end=2584,
 )
 
 
@@ -1767,8 +1729,8 @@ _INDEXOPTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2677,
-  serialized_end=2792,
+  serialized_start=2586,
+  serialized_end=2701,
 )
 
 
@@ -1805,8 +1767,8 @@ _KEYCOLUMNSPAIR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2794,
-  serialized_end=2856,
+  serialized_start=2703,
+  serialized_end=2765,
 )
 
 
@@ -1843,8 +1805,8 @@ _KEYCOLUMNSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2858,
-  serialized_end=2942,
+  serialized_start=2767,
+  serialized_end=2851,
 )
 
 
@@ -1895,8 +1857,8 @@ _POSTING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2944,
-  serialized_end=3030,
+  serialized_start=2853,
+  serialized_end=2939,
 )
 
 
@@ -1926,8 +1888,8 @@ _POSTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3032,
-  serialized_end=3066,
+  serialized_start=2941,
+  serialized_end=2975,
 )
 
 
@@ -1947,15 +1909,15 @@ _POSTINGFILTER = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='start_ts', full_name='PostingFilter.start_ts', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='end_ts', full_name='PostingFilter.end_ts', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1978,8 +1940,8 @@ _POSTINGFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3068,
-  serialized_end=3165,
+  serialized_start=2977,
+  serialized_end=3074,
 )
 
 
@@ -2016,8 +1978,107 @@ _KCPIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3167,
-  serialized_end=3229,
+  serialized_start=3076,
+  serialized_end=3138,
+)
+
+
+_LISTVALUE = _descriptor.Descriptor(
+  name='ListValue',
+  full_name='ListValue',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='ListValue.values', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3140,
+  serialized_end=3175,
+)
+
+
+_MAPVALUE_VALUESENTRY = _descriptor.Descriptor(
+  name='ValuesEntry',
+  full_name='MapValue.ValuesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='MapValue.ValuesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='MapValue.ValuesEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3228,
+  serialized_end=3281,
+)
+
+_MAPVALUE = _descriptor.Descriptor(
+  name='MapValue',
+  full_name='MapValue',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='MapValue.values', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[_MAPVALUE_VALUESENTRY, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3177,
+  serialized_end=3281,
 )
 
 
@@ -2134,8 +2195,8 @@ _TABLEOPTION = _descriptor.Descriptor(
       name='opt', full_name='TableOption.opt',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=3232,
-  serialized_end=3621,
+  serialized_start=3284,
+  serialized_end=3673,
 )
 
 
@@ -2203,8 +2264,8 @@ _TDA = _descriptor.Descriptor(
       name='time_margin', full_name='Tda.time_margin',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=3624,
-  serialized_end=3771,
+  serialized_start=3676,
+  serialized_end=3823,
 )
 
 
@@ -2255,8 +2316,8 @@ _TOKENFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3773,
-  serialized_end=3879,
+  serialized_start=3825,
+  serialized_end=3931,
 )
 
 
@@ -2301,8 +2362,8 @@ _UPDATEINSTRUCTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3882,
-  serialized_end=4037,
+  serialized_start=3934,
+  serialized_end=4089,
 )
 
 
@@ -2353,8 +2414,8 @@ _UPDATEOPERATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4040,
-  serialized_end=4174,
+  serialized_start=4092,
+  serialized_end=4226,
 )
 
 
@@ -2407,6 +2468,20 @@ _VALUE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='list', full_name='Value.list', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='map', full_name='Value.map', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -2419,11 +2494,11 @@ _VALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='value', full_name='Value.value',
+      name='type', full_name='Value.type',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=4176,
-  serialized_end=4296,
+  serialized_start=4229,
+  serialized_end=4402,
 )
 
 
@@ -2460,8 +2535,8 @@ _VERSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4298,
-  serialized_end=4337,
+  serialized_start=4404,
+  serialized_end=4443,
 )
 
 
@@ -2532,8 +2607,8 @@ _WRAPPER = _descriptor.Descriptor(
       name='size_margin', full_name='Wrapper.size_margin',
       index=1, containing_type=None, fields=[]),
   ],
-  serialized_start=4340,
-  serialized_end=4500,
+  serialized_start=4446,
+  serialized_end=4606,
 )
 
 _APOLLOPDU.fields_by_name['version'].message_type = _VERSION
@@ -2688,24 +2763,7 @@ _SEEK.fields_by_name['key'].message_type = _FIELD
 _ADDINDEX.fields_by_name['config'].message_type = _INDEXCONFIG
 _INDEXREAD.fields_by_name['filter'].message_type = _POSTINGFILTER
 _CONTINUATION.fields_by_name['key'].message_type = _FIELD
-_FIELD.oneofs_by_name['value'].fields.append(
-  _FIELD.fields_by_name['boolean'])
-_FIELD.fields_by_name['boolean'].containing_oneof = _FIELD.oneofs_by_name['value']
-_FIELD.oneofs_by_name['value'].fields.append(
-  _FIELD.fields_by_name['int'])
-_FIELD.fields_by_name['int'].containing_oneof = _FIELD.oneofs_by_name['value']
-_FIELD.oneofs_by_name['value'].fields.append(
-  _FIELD.fields_by_name['binary'])
-_FIELD.fields_by_name['binary'].containing_oneof = _FIELD.oneofs_by_name['value']
-_FIELD.oneofs_by_name['value'].fields.append(
-  _FIELD.fields_by_name['null'])
-_FIELD.fields_by_name['null'].containing_oneof = _FIELD.oneofs_by_name['value']
-_FIELD.oneofs_by_name['value'].fields.append(
-  _FIELD.fields_by_name['double'])
-_FIELD.fields_by_name['double'].containing_oneof = _FIELD.oneofs_by_name['value']
-_FIELD.oneofs_by_name['value'].fields.append(
-  _FIELD.fields_by_name['string'])
-_FIELD.fields_by_name['string'].containing_oneof = _FIELD.oneofs_by_name['value']
+_FIELD.fields_by_name['value'].message_type = _VALUE
 _FIELDS.fields_by_name['fields'].message_type = _FIELD
 _INDEXCONFIG.fields_by_name['options'].message_type = _INDEXOPTIONS
 _INDEXOPTIONS.fields_by_name['char_filter'].enum_type = _CHARFILTER
@@ -2719,6 +2777,10 @@ _POSTING.fields_by_name['key'].message_type = _FIELD
 _POSTINGS.fields_by_name['list'].message_type = _POSTING
 _POSTINGFILTER.fields_by_name['sort_by'].enum_type = _SORTBY
 _KCPIT.fields_by_name['key_columns_pair'].message_type = _KEYCOLUMNSPAIR
+_LISTVALUE.fields_by_name['values'].message_type = _VALUE
+_MAPVALUE_VALUESENTRY.fields_by_name['value'].message_type = _VALUE
+_MAPVALUE_VALUESENTRY.containing_type = _MAPVALUE
+_MAPVALUE.fields_by_name['values'].message_type = _MAPVALUE_VALUESENTRY
 _TABLEOPTION.fields_by_name['type'].enum_type = _TYPE
 _TABLEOPTION.fields_by_name['data_model'].enum_type = _DATAMODEL
 _TABLEOPTION.fields_by_name['wrapper'].message_type = _WRAPPER
@@ -2783,24 +2845,32 @@ _UPDATEINSTRUCTION_INSTRUCTION.containing_type = _UPDATEINSTRUCTION
 _UPDATEOPERATION.fields_by_name['update_instruction'].message_type = _UPDATEINSTRUCTION
 _UPDATEOPERATION.fields_by_name['value'].message_type = _VALUE
 _UPDATEOPERATION.fields_by_name['default_value'].message_type = _VALUE
-_VALUE.oneofs_by_name['value'].fields.append(
+_VALUE.fields_by_name['list'].message_type = _LISTVALUE
+_VALUE.fields_by_name['map'].message_type = _MAPVALUE
+_VALUE.oneofs_by_name['type'].fields.append(
   _VALUE.fields_by_name['boolean'])
-_VALUE.fields_by_name['boolean'].containing_oneof = _VALUE.oneofs_by_name['value']
-_VALUE.oneofs_by_name['value'].fields.append(
+_VALUE.fields_by_name['boolean'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
   _VALUE.fields_by_name['int'])
-_VALUE.fields_by_name['int'].containing_oneof = _VALUE.oneofs_by_name['value']
-_VALUE.oneofs_by_name['value'].fields.append(
+_VALUE.fields_by_name['int'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
   _VALUE.fields_by_name['binary'])
-_VALUE.fields_by_name['binary'].containing_oneof = _VALUE.oneofs_by_name['value']
-_VALUE.oneofs_by_name['value'].fields.append(
+_VALUE.fields_by_name['binary'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
   _VALUE.fields_by_name['null'])
-_VALUE.fields_by_name['null'].containing_oneof = _VALUE.oneofs_by_name['value']
-_VALUE.oneofs_by_name['value'].fields.append(
+_VALUE.fields_by_name['null'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
   _VALUE.fields_by_name['double'])
-_VALUE.fields_by_name['double'].containing_oneof = _VALUE.oneofs_by_name['value']
-_VALUE.oneofs_by_name['value'].fields.append(
+_VALUE.fields_by_name['double'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
   _VALUE.fields_by_name['string'])
-_VALUE.fields_by_name['string'].containing_oneof = _VALUE.oneofs_by_name['value']
+_VALUE.fields_by_name['string'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
+  _VALUE.fields_by_name['list'])
+_VALUE.fields_by_name['list'].containing_oneof = _VALUE.oneofs_by_name['type']
+_VALUE.oneofs_by_name['type'].fields.append(
+  _VALUE.fields_by_name['map'])
+_VALUE.fields_by_name['map'].containing_oneof = _VALUE.oneofs_by_name['type']
 _WRAPPER.oneofs_by_name['time_margin'].fields.append(
   _WRAPPER.fields_by_name['seconds'])
 _WRAPPER.fields_by_name['seconds'].containing_oneof = _WRAPPER.oneofs_by_name['time_margin']
@@ -2852,6 +2922,8 @@ DESCRIPTOR.message_types_by_name['Posting'] = _POSTING
 DESCRIPTOR.message_types_by_name['Postings'] = _POSTINGS
 DESCRIPTOR.message_types_by_name['PostingFilter'] = _POSTINGFILTER
 DESCRIPTOR.message_types_by_name['KcpIt'] = _KCPIT
+DESCRIPTOR.message_types_by_name['ListValue'] = _LISTVALUE
+DESCRIPTOR.message_types_by_name['MapValue'] = _MAPVALUE
 DESCRIPTOR.message_types_by_name['TableOption'] = _TABLEOPTION
 DESCRIPTOR.message_types_by_name['Tda'] = _TDA
 DESCRIPTOR.message_types_by_name['TokenFilter'] = _TOKENFILTER
@@ -3124,6 +3196,28 @@ KcpIt = _reflection.GeneratedProtocolMessageType('KcpIt', (_message.Message,), d
   ))
 _sym_db.RegisterMessage(KcpIt)
 
+ListValue = _reflection.GeneratedProtocolMessageType('ListValue', (_message.Message,), dict(
+  DESCRIPTOR = _LISTVALUE,
+  __module__ = 'apollo_pb2'
+  # @@protoc_insertion_point(class_scope:ListValue)
+  ))
+_sym_db.RegisterMessage(ListValue)
+
+MapValue = _reflection.GeneratedProtocolMessageType('MapValue', (_message.Message,), dict(
+
+  ValuesEntry = _reflection.GeneratedProtocolMessageType('ValuesEntry', (_message.Message,), dict(
+    DESCRIPTOR = _MAPVALUE_VALUESENTRY,
+    __module__ = 'apollo_pb2'
+    # @@protoc_insertion_point(class_scope:MapValue.ValuesEntry)
+    ))
+  ,
+  DESCRIPTOR = _MAPVALUE,
+  __module__ = 'apollo_pb2'
+  # @@protoc_insertion_point(class_scope:MapValue)
+  ))
+_sym_db.RegisterMessage(MapValue)
+_sym_db.RegisterMessage(MapValue.ValuesEntry)
+
 TableOption = _reflection.GeneratedProtocolMessageType('TableOption', (_message.Message,), dict(
   DESCRIPTOR = _TABLEOPTION,
   __module__ = 'apollo_pb2'
@@ -3181,4 +3275,6 @@ Wrapper = _reflection.GeneratedProtocolMessageType('Wrapper', (_message.Message,
 _sym_db.RegisterMessage(Wrapper)
 
 
+_MAPVALUE_VALUESENTRY.has_options = True
+_MAPVALUE_VALUESENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
 # @@protoc_insertion_point(module_scope)

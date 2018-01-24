@@ -44,18 +44,49 @@ def make_field(name, value):
     field = apollo.Field()
     field.name = name
     if isinstance(value, bool):
-        field.boolean = value
+        field.value.boolean = value
     elif isinstance(value, int):
-        field.int = value
+        field.value.int = value
     elif isinstance(value, (bytes, bytearray)):
-        field.binary = value
+        field.value.binary = value
     elif value == None:
-        field.null = b''
+        field.value.null = b''
     elif isinstance(value, float):
-        field.double = value
+        field.value.double = value
     elif isinstance(value, str):
-        field.string = value
+        field.value.string = value
+    elif isinstance(value, list):
+        values = [make_value(v) for v in value]
+        field.value.list.values.extend(values)
+    elif isinstance(value, dict):
+        for k, v in value.items():
+            print('XXXXXX:', k,' ',v)
+            #field.value.map.values[k].boolean = False
+            field.value.map.values[k].CopyFrom(make_value(v))
     return field
+
+def make_value(val):
+    value = apollo.Value()
+    if isinstance(val, bool):
+        value.boolean = val
+    elif isinstance(val, int):
+        value.int = val
+    elif isinstance(val, (bytes, bytearray)):
+        value.binary = val
+    elif val == None:
+        value.null = b''
+    elif isinstance(val, float):
+        value.double = val
+    elif isinstance(val, str):
+        value.string = val
+    elif isinstance(val, list):
+        values = [make_value(v) for v in val]
+        value.list.values.extend(values)
+    elif isinstance(val, dict):
+        for k, v in value.items():
+            value.map.values[k].CopyFrom(make_value(v))
+        #   value.map.values[k].submessage_field = make_value(v)
+    return value
 
 def make_index_config_list(config):
     return [make_index_config(c) for c in config]
@@ -79,8 +110,8 @@ def make_posting_filter(filter):
     pf.sort_by = filter['sort_by'].value
     # empty bytes denote nil. proto3 defaults to 0 for numeric values
     # thus, we use bytes to distinguish if 0 is explictly set.
-    pf.start_ts = filter.get('start_ts', False)
-    pf.end_ts = filter.get('end_ts', False)
+    pf.start_ts = uIntToBinaryDefault(filter.get('start_ts', False))
+    pf.end_ts = uIntToBinaryDefault(filter.get('end_ts', False))
     pf.max_postings = filter['max_postings']
     return pf
 
@@ -101,7 +132,6 @@ def make_update_operation(op):
     return update_operation
 
 def uIntToBinaryDefault(uint):
-    logging.debug('uint %d', uint)
     if uint:
         byte_len = (uint.bit_length() + 7) // 8
         return uint.to_bytes(byte_len, byteorder='big')
@@ -148,20 +178,28 @@ def format_fields(fields):
 
 def format_field(field):
     name = field.name
-    value = None
-    if field.HasField('boolean'):
-        value = field.boolean
-    elif field.HasField('int'):
-        value = field.int
-    elif field.HasField('binary'):
-        value = field.binary
-    elif field.HasField('null'):
-        value == None
-    elif field.HasField('double'):
-        value = field.double
-    elif field.HasField('string'):
-        value = field.string
+    value = format_value(field.value)
     return (name, value)
+
+def format_value(val):
+    value = None
+    if val.HasField('boolean'):
+        value = val.boolean
+    elif val.HasField('int'):
+        value = val.int
+    elif val.HasField('binary'):
+        value = val.binary
+    elif val.HasField('null'):
+        value == None
+    elif val.HasField('double'):
+        value = val.double
+    elif val.HasField('string'):
+        value = val.string
+    elif val.HasField('list'):
+        value = [format_value(v) for v in val.list.values]
+    elif val.HasField('map'):
+        value = {k: format_value(v) for k, v in val.map.values.items()}
+    return value
 
 def format_kcp(kcp):
     return (format_fields(kcp.key), format_fields(kcp.columns))

@@ -45,7 +45,7 @@
         "scrampy": {
             "editable": true,
             "git": "ssh://git@github.com/pundunlabs/scrampy.git",
-            "ref": "38be06eeed78cf7f6a74f37cb5e2f14838a2f16c"
+            "ref": "master"
         },
         "six": {
             "hashes": [

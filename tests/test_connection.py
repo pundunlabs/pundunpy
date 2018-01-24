@@ -30,7 +30,7 @@ class TestPundunConnection(unittest.TestCase):
         client = Client(host, port, user, secret)
         table_name = 'pundunpy_test_table'
         timestamp = lambda: int(round(time.time()))
-        start_ts = timestamp()
+        start_ts = timestamp()-1
         key1 = {'id': '0001', 'ts': time.monotonic()}
         key2 = {'id': '0002', 'ts': time.monotonic()}
         tab_exists = table_name in client.list_tables()
@@ -40,9 +40,9 @@ class TestPundunConnection(unittest.TestCase):
                                             ['id', 'ts'],
                                             {'num_of_shards': 1}))
         self.assertEqual(client.read('non_existing_table', key1),
-                         ('system', '{error,"no_table"}'))
+                         ('misc', '{error,"no_table"}'))
         self.assertEqual(client.read(table_name, key1),
-                         ('system', '{error,not_found}'))
+                         ('misc', '{error,not_found}'))
         index_config1 = {'column': 'name'}
         index_config2 = {'column': 'text',
                          'index_options': {
@@ -60,6 +60,8 @@ class TestPundunConnection(unittest.TestCase):
         self.assertTrue(client.add_index(table_name, config))
         data1 = {'name': 'Erdem Aksu',
                  'text': 'Husband Dad and Coder'}
+        nested_map = {'some nested int field': 123456,
+                      'another nested bin field': b'123456'}
         self.assertTrue(client.write(table_name, key1, data1))
         num = 0x123456789ABCDEF0
         data2 = {'text': 'Some irrelevant text here and there',
@@ -67,7 +69,9 @@ class TestPundunConnection(unittest.TestCase):
                  'some_int': 900,
                  'bin': utils.uIntToBinaryDefault(num),
                  'blank': None,
-                 'double': 99.45}
+                 'double': 99.45,
+                 'list': ["str", False, 99, b'bin', None, 3.14],
+                 'dict': nested_map}
         self.assertTrue(client.write(table_name, key2, data2))
         # Succesful Read Operations
         self.assertEqual(client.read(table_name, key1), data1)
@@ -100,7 +104,7 @@ class TestPundunConnection(unittest.TestCase):
         kcp2 = client.prev(kcp_it1['it'])
         self.assertEqual(kcp2, (key2, data2))
         error = client.prev(kcp_it1['it'])
-        self.assertEqual(error, ('system', '{error,invalid}'))
+        self.assertEqual(error, ('misc', '{error,invalid}'))
         self.assertEqual(client.last(table_name)['kcp'], kcp1)
         # Update operations
         up_ops1 = [
@@ -125,6 +129,35 @@ class TestPundunConnection(unittest.TestCase):
         self.assertTrue(client.remove_index(table_name, ['name']))
         all_info = client.table_info(table_name)
         logging.debug("table_info:\n%s", pprint.pformat(all_info))
+        del client
+
+    def test_map_key(self):
+        host = '127.0.0.1'
+        port = 8887
+        user = 'admin'
+        secret = 'admin'
+        logging.info("testing map key..")
+        client = Client(host, port, user, secret)
+        table_name = 'pundunpy_test_table'
+        tab_exists = table_name in client.list_tables()
+        if tab_exists:
+            self.assertTrue(client.delete_table(table_name))
+        self.assertTrue(client.create_table(table_name,
+                                            ['id', 'map'],
+                                            {'num_of_shards': 1}))
+        mymap = {'a': 1, 'b': 1, 'c': 1}
+        mymap2 = {'a': 2, 'b': 2, 'c': 2}
+        key1 = {'id': 'same', 'map': mymap}
+        key2 = {'id': 'same', 'map': mymap2}
+        data1 = {'number': '1', 'text': 'One'}
+        data2 = {'number': '2', 'text': 'Two'}
+        self.assertTrue(client.write(table_name, key1, data1))
+        self.assertTrue(client.write(table_name, key2, data2))
+        self.assertEqual(client.read(table_name, key1), data1)
+        self.assertEqual(client.read(table_name, key2), data2)
+        read_range_res = client.read_range(table_name, key2, key1, 2)
+        expected_range_res =[(key2, data2), (key1, data1)]
+        self.assertEqual(read_range_res['key_columns_list'], expected_range_res)
         del client
 
 if __name__ == '__main__':
