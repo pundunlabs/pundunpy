@@ -60,8 +60,6 @@ def make_field(name, value):
         field.value.list.values.extend(values)
     elif isinstance(value, dict):
         for k, v in value.items():
-            print('XXXXXX:', k,' ',v)
-            #field.value.map.values[k].boolean = False
             field.value.map.values[k].CopyFrom(make_value(v))
     return field
 
@@ -83,9 +81,8 @@ def make_value(val):
         values = [make_value(v) for v in val]
         value.list.values.extend(values)
     elif isinstance(val, dict):
-        for k, v in value.items():
+        for k, v in val.items():
             value.map.values[k].CopyFrom(make_value(v))
-        #   value.map.values[k].submessage_field = make_value(v)
     return value
 
 def make_index_config_list(config):
