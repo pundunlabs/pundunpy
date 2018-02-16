@@ -33,9 +33,9 @@ class Client:
         try:
             loop = asyncio.get_event_loop()
             return loop
-        except:
+        except RuntimeError:
             loop = asyncio.new_event_loop()
-            set_event_loop(loop)
+            asyncio.set_event_loop(loop)
             return loop
 
     def cleanup(self):

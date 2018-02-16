@@ -7,6 +7,7 @@ import unittest
 import pprint
 from pundun import utils
 from pundun import constants as enum
+from threading import Timer
 import time
 
 # Try to achive parallel execution
@@ -20,6 +21,10 @@ import time
 
 class TestPundunConnection(unittest.TestCase):
     """Testing pundun connection."""
+
+    def test_thread(self):
+        timer = Timer(0, self.test_all)
+        timer.start()
 
     def test_all(self):
         host = '127.0.0.1'
