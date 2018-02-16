@@ -18,7 +18,7 @@ class Client:
         self.tid = 0
         self.cid = 0
         self.message_dict = {}
-        self.loop = asyncio.get_event_loop()
+        self.loop = self._get_event_loop()
         (self.reader, self.writer) = self._connect(self.loop)
         self.listener_task = asyncio.ensure_future(self._listener())
 
@@ -28,6 +28,15 @@ class Client:
                 self.listener_task.cancel()
                 self._disconnect(self.loop)
             self.loop.close()
+
+    def _get_event_loop(self):
+        try:
+            loop = asyncio.get_event_loop()
+            return loop
+        except:
+            loop = asyncio.new_event_loop()
+            set_event_loop(loop)
+            return loop
 
     def cleanup(self):
         logging.info('Client cleanup..')
