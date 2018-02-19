@@ -32,11 +32,17 @@ class Client:
     def _get_event_loop(self):
         try:
             loop = asyncio.get_event_loop()
-            return loop
+            if loop.is_closed():
+                return self._get_new_event_loop()
+            else:
+                return loop
         except RuntimeError:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            return loop
+            return self._get_new_event_loop()
+
+    def _get_new_event_loop(self):
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        return loop
 
     def cleanup(self):
         logging.info('Client cleanup..')
