@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import asyncio
 import logging
 from context import pundun
 from pundun import Client
@@ -8,30 +8,96 @@ import pprint
 from pundun import utils
 from pundun import constants as enum
 from threading import Timer
+import concurrent.futures
 import time
 
-# Try to achive parallel execution
-#from concurrent.futures import ProcessPoolExecutor
-#executor = ProcessPoolExecutor(2)
-#    loop = asyncio.get_event_loop()
-#    boo = asyncio.ensure_future(loop.run_in_executor(executor, say_boo))
-#    baa = asyncio.ensure_future(loop.run_in_executor(executor, say_baa))
-#
-#    loop.run_forever()
+def get_result(future):
+    try:
+        return future.result(3)
+    except asyncio.TimeoutError:
+        print('The coroutine took too long, cancelling the task...')
+        future.cancel()
+        return None
+    except Exception as exc:
+        print('The coroutine raised an exception: {!r}'.format(exc))
+        return None
+    else:
+        print('The coroutine returned: {!r}'.format(result))
+        return None
 
 class TestPundunConnection(unittest.TestCase):
     """Testing pundun connection."""
 
+    def _calls_async(self, client, table_name):
+        logging.info('_calls_async for %s', table_name)
+        future = client.list_tables(async=True)
+        tab_exists = table_name in get_result(future)
+        logging.info('%s exists %s', table_name, pprint.pformat(tab_exists))
+        if tab_exists:
+            logging.info('delete_table %s', table_name)
+            future = client.delete_table(table_name, async=True)
+            self.assertTrue(future.result(3))
+        logging.info('create_table %s', table_name)
+        future = client.create_table(table_name,
+                                ['id', 'ts'],
+                                {'num_of_shards': 1,
+                                 'distributed': False}, async=True)
+        self.assertTrue(future.result(3))
+        timestamp = lambda: int(round(time.time()))
+        start_ts = timestamp()-1
+        key1 = {'id': '0001', 'ts': time.monotonic()}
+        key2 = {'id': '0002', 'ts': time.monotonic()}
+        data1 = {'text': 'Coroutines used with asyncio may be implemented.'}
+        future = client.write(table_name, key1, data1, async=True)
+        self.assertTrue(future.result(3))
+        data2 = {'text': 'Some irrelevant text here and there'}
+        future = client.write(table_name, key2, data2, async=True)
+        self.assertTrue(future.result(3))
+        # Succesful Read Operations
+        future = client.read(table_name, key1, async=True)
+        self.assertEqual(future.result(3), data1)
+        future = client.read(table_name, key2, async=True)
+        self.assertEqual(future.result(3), data2)
+        logging.info('_calls_async done')
+        return "async_calls_done"
+
+    #@unittest.skip('skip test_thread_pool')
+    def test_thread_pool(self):
+        logging.info('testing thread pool')
+        client = Client('127.0.0.1', 8887, 'admin', 'admin')
+        futures = []
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            executor.submit(client.run_loop)
+            for i in range(5):
+                table_name = 'python_thread_' + str(i)
+                f = executor.submit(self._calls_async, client, table_name)
+                futures.append(f)
+            for future in concurrent.futures.as_completed(futures, timeout=5):
+                try:
+                    data = future.result()
+                except Exception as exc:
+                    logging.error('generated an exception: %s' % exc)
+                else:
+                    logging.info('future result: %s', pprint.pformat(data))
+            executor.submit(client.stop_loop)
+        client.cleanup()
+
+    #@unittest.skip('skip test_thread')
     def test_thread(self):
-        timer = Timer(0, self.test_all)
+        logging.info("test thread with all sync calls..")
+        timer = Timer(0, self._test_all_sync)
         timer.start()
 
-    def test_all(self):
+    #@unittest.skip('skip test_main_thread')
+    def test_main_thread(self):
+        logging.info("testing all sync calls..")
+        self._test_all_sync()
+
+    def _test_all_sync(self):
         host = '127.0.0.1'
         port = 8887
         user = 'admin'
         secret = 'admin'
-        logging.info("testing..")
         client = Client(host, port, user, secret)
         table_name = 'pundunpy_test_table'
         timestamp = lambda: int(round(time.time()))
@@ -134,8 +200,9 @@ class TestPundunConnection(unittest.TestCase):
         self.assertTrue(client.remove_index(table_name, ['name']))
         all_info = client.table_info(table_name)
         logging.debug("table_info:\n%s", pprint.pformat(all_info))
-        del client
+        client.cleanup()
 
+    #@unittest.skip('skip test_map_key')
     def test_map_key(self):
         host = '127.0.0.1'
         port = 8887
@@ -163,8 +230,8 @@ class TestPundunConnection(unittest.TestCase):
         read_range_res = client.read_range(table_name, key2, key1, 2)
         expected_range_res =[(key2, data2), (key1, data1)]
         self.assertEqual(read_range_res['key_columns_list'], expected_range_res)
-        del client
+        client.cleanup()
 
 if __name__ == '__main__':
-    utils.setup_logging(level=logging.DEBUG)
+    utils.setup_logging(level=logging.INFO)
     unittest.main()
