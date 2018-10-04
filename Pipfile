@@ -11,7 +11,7 @@ name = "pypi"
 
 [packages]
 
-scrampy = {ref = "master", git = "ssh://git@github.com/pundunlabs/scrampy.git", editable = true}
+scrampy = {ref = "master", git = "https://github.com/pundunlabs/scrampy.git", editable = true}
 protobuf = "==3.5.1"
 
 
