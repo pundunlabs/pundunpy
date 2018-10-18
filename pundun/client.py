@@ -1,3 +1,4 @@
+# vim: set expandtab:
 import asyncio
 import pprint
 import logging
@@ -5,6 +6,8 @@ from pundun import apollo_pb2 as apollo
 from pundun import utils
 import scram
 import sys
+import ssl
+from concurrent.futures import CancelledError
 
 class Client:
     """Client class including pundun procedures."""
@@ -17,9 +20,15 @@ class Client:
         self.password = password
         self.tid = 0
         self.cid = 0
+        self.writer = None
+        self.reader = None
         self.message_dict = {}
         self.loop = self._get_event_loop()
-        (self.reader, self.writer) = self._connect(self.loop)
+        (self.reader, self.writer) = self._connect()
+        if self.reader == None or self.writer == None:
+            raise ValueError('Could not connect.')
+
+        self._auth()
         asyncio.ensure_future(self._listener(), loop=self.loop)
 
     def __del__(self):
@@ -31,7 +40,7 @@ class Client:
         self._disconnect()
 
     def _cancel_all_tasks(self):
-        for task in asyncio.Task.all_tasks(loop=self.loop):
+        for task in asyncio.all_tasks(loop=self.loop):
             task.cancel()
 
     def _get_event_loop(self):
@@ -47,43 +56,86 @@ class Client:
         logging.debug('Stop loop.')
         return self.loop.call_soon_threadsafe(self.loop.stop)
 
+    def write_data(self, msg, timeout=0):
+        length = len(msg)
+        num_bytes = length.to_bytes(4, byteorder='big')
+        data = b''.join([num_bytes, msg])
+        logging.debug('send bytes %s', pprint.pformat(data))
+        res = self.writer.write(data)
+        return res
+
+    async def read_data(self, timeout = None):
+        if timeout == 0:
+            timeout = None
+        try:
+            numbytes = await asyncio.wait_for(self.reader.readexactly(4),
+                                              timeout=timeout,loop=self.loop)
+            lenght = int.from_bytes(numbytes, byteorder='big')
+            data = await asyncio.wait_for(self.reader.readexactly(lenght),
+                                          timeout=timeout, loop=self.loop)
+            return data
+
+        except CancelledError as e:
+            raise e
+        except asyncio.TimeoutError as e:
+            raise e
+        except Exception as e:
+            err = sys.exc_info()
+            logging.warning('read error: %s', pprint.pformat(err))
+            raise e
+
     async def _listener(self):
         logging.info('Listener started..')
         while self.loop.is_running():
             logging.debug('listener looping')
             try:
-                len_bytes = await self.reader.readexactly(4)
-                length = int.from_bytes(len_bytes, byteorder='big')
-                cid_bytes = await self.reader.readexactly(2)
-                cid = int.from_bytes(cid_bytes, byteorder='big')
-                data = await self.reader.readexactly(length-2)
+                ciddata = await self.read_data()
+                cid = int.from_bytes(ciddata[:2], byteorder='big')
                 q = self.message_dict.get(cid, False)
                 if q:
-                    q.put_nowait(data)
+                    q.put_nowait(ciddata[2:])
                     logging.debug('put q: %s', pprint.pformat(q))
                 else:
                     logging.debug('no waiting q for cid: %d', cid)
                 continue
-            except asyncio.CancelledError:
+            except CancelledError as e:
                 logging.info('Listener task cancelled..')
+                raise e
                 break
+            except Exception as e:
+                print("Exceptionasdfasd {}".format(e))
+                raise e
             except:
                 err = sys.exc_info()
                 logging.warning('Stop listener: %s', pprint.pformat(err))
                 break
         logging.info('Listener stopped..')
 
-    def _connect(self, loop):
-        (reader, writer) = scram.connect(self.host, self.port, loop=loop)
-        res = scram.authenticate(self.username, self.password,
-                                 streamreader = reader,
-                                 streamwriter = writer,
-                                 loop=loop)
-        logging.debug('Scrampy Auth response: {}'.format(res))
+    def _connect(self):
+        ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+        connection = asyncio.open_connection(self.host,
+                                             self.port,
+                                             ssl=ctx, loop=self.loop)
+        (reader, writer) = self.loop.run_until_complete(connection)
+        logging.debug('connected')
         return (reader, writer)
 
+    def _auth(self):
+        logging.debug('authing')
+        authing = scram.authenticate(self.username, self.password,
+                                 streamreader = self,
+                                 streamwriter = self,
+                                 loop=self.loop)
+        res = self.loop.run_until_complete(authing)
+        logging.debug('Scrampy Auth response: {}'.format(res))
+
     def _disconnect(self):
-        return scram.disconnect(streamwriter=self.writer, loop=self.loop)
+        if self.writer:
+            try:
+                return self.writer.close()
+            except:
+                return
+        return
 
     def create_table(self, table_name, key_def, options, do_async = False):
         if do_async:
@@ -392,13 +444,9 @@ class Client:
         logging.debug('encoded pdu: %s', pprint.pformat(data))
         cid = self._get_cid()
         cid_bytes = cid.to_bytes(2, byteorder='big')
-        length = len(data) + 2
-        len_bytes = length.to_bytes(4, byteorder='big')
-        logging.debug('len_bytes: %s', pprint.pformat(len_bytes))
         logging.debug('cid_bytes: %s', pprint.pformat(cid_bytes))
-        msg = b''.join([len_bytes, cid_bytes, data])
-        logging.debug('send bytes %s', pprint.pformat(msg))
-        self.writer.write(msg)
+        msg = b''.join([cid_bytes, data])
+        self.write_data(msg)
         q = asyncio.Queue(maxsize = 1, loop=self.loop)
         self.message_dict[cid] = q
         coro = asyncio.Task(q.get(), loop=self.loop)

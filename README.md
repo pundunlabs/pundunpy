@@ -14,7 +14,7 @@ pundunpy uses Pipfile and Python3.
 You can easily use `pipenv` to do install all dependencies.
 
 ```
-git clone https://github.com/pundunlabs/pundunpy
+git clone https://github.com/falkevik/pundunpy
 cd pundunpy
 pipenv install
 ```
