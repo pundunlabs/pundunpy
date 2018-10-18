@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# vim: set expandtab:
 import asyncio
 import logging
 from context import pundun
@@ -10,6 +11,8 @@ from pundun import constants as enum
 from threading import Timer
 import concurrent.futures
 import time
+import logging
+import sys
 
 def get_result(future):
     try:
@@ -30,33 +33,33 @@ class TestPundunConnection(unittest.TestCase):
 
     def _calls_async(self, client, table_name):
         logging.info('_calls_async for %s', table_name)
-        future = client.list_tables(async=True)
+        future = client.list_tables(do_async=True)
         tab_exists = table_name in get_result(future)
         logging.info('%s exists %s', table_name, pprint.pformat(tab_exists))
         if tab_exists:
             logging.info('delete_table %s', table_name)
-            future = client.delete_table(table_name, async=True)
+            future = client.delete_table(table_name, do_async=True)
             self.assertTrue(future.result(3))
         logging.info('create_table %s', table_name)
         future = client.create_table(table_name,
                                 ['id', 'ts'],
                                 {'num_of_shards': 1,
-                                 'distributed': False}, async=True)
+                                 'distributed': False}, do_async=True)
         self.assertTrue(future.result(3))
         timestamp = lambda: int(round(time.time()))
         start_ts = timestamp()-1
         key1 = {'id': '0001', 'ts': time.monotonic()}
         key2 = {'id': '0002', 'ts': time.monotonic()}
         data1 = {'text': 'Coroutines used with asyncio may be implemented.'}
-        future = client.write(table_name, key1, data1, async=True)
+        future = client.write(table_name, key1, data1, do_async=True)
         self.assertTrue(future.result(3))
         data2 = {'text': 'Some irrelevant text here and there'}
-        future = client.write(table_name, key2, data2, async=True)
+        future = client.write(table_name, key2, data2, do_async=True)
         self.assertTrue(future.result(3))
         # Succesful Read Operations
-        future = client.read(table_name, key1, async=True)
+        future = client.read(table_name, key1, do_async=True)
         self.assertEqual(future.result(3), data1)
-        future = client.read(table_name, key2, async=True)
+        future = client.read(table_name, key2, do_async=True)
         self.assertEqual(future.result(3), data2)
         logging.info('_calls_async done')
         return "async_calls_done"

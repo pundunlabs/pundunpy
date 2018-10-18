@@ -85,8 +85,8 @@ class Client:
     def _disconnect(self):
         return scram.disconnect(streamwriter=self.writer, loop=self.loop)
 
-    def create_table(self, table_name, key_def, options, async = False):
-        if async:
+    def create_table(self, table_name, key_def, options, do_async = False):
+        if do_async:
             return self._run_coroutine(
                     self._create_table(table_name, key_def, options))
         else:
@@ -102,8 +102,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def delete_table(self, table_name, async = False):
-        if async:
+    def delete_table(self, table_name, do_async = False):
+        if do_async:
             return self._run_coroutine(self._delete_table(table_name))
         else:
             return self.loop.run_until_complete(self._delete_table(table_name))
@@ -114,8 +114,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def open_table(self, table_name, async = False):
-        if async:
+    def open_table(self, table_name, do_async = False):
+        if do_async:
             return self._run_coroutine(self._open_table(table_name))
         else:
             return self.loop.run_until_complete(self._open_table(table_name))
@@ -126,8 +126,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def close_table(self, table_name, async = False):
-        if async:
+    def close_table(self, table_name, do_async = False):
+        if do_async:
             return self._run_coroutine(self._close_table(table_name))
         else:
             return self.loop.run_until_complete(self._close_table(table_name))
@@ -138,8 +138,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def table_info(self, table_name, attributes = [], async = False):
-        if async:
+    def table_info(self, table_name, attributes = [], do_async = False):
+        if do_async:
             return self._run_coroutine(self._table_info(table_name, attributes))
         else:
             return self.loop.run_until_complete(
@@ -152,8 +152,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def write(self, table_name, key, columns, async = False):
-        if async:
+    def write(self, table_name, key, columns, do_async = False):
+        if do_async:
             return self._run_coroutine(self._write(table_name, key, columns))
         else:
             return self.loop.run_until_complete(
@@ -169,8 +169,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def delete(self, table_name, key, async = False):
-        if async:
+    def delete(self, table_name, key, do_async = False):
+        if do_async:
             return self._run_coroutine(self._delete(table_name, key))
         else:
             return self.loop.run_until_complete(self._delete(table_name, key))
@@ -183,8 +183,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def update(self, table_name, key, update_operations, async = False):
-        if async:
+    def update(self, table_name, key, update_operations, do_async = False):
+        if do_async:
             return self._run_coroutine(
                     self._update(table_name, key, update_operations))
         else:
@@ -201,8 +201,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def read(self, table_name, key, async = False):
-        if async:
+    def read(self, table_name, key, do_async = False):
+        if do_async:
             return self._run_coroutine(self._read(table_name, key))
         else:
             return self.loop.run_until_complete(self._read(table_name, key))
@@ -215,8 +215,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def index_read(self, table_name, column_name, term, filter, async = False):
-        if async:
+    def index_read(self, table_name, column_name, term, filter, do_async = False):
+        if do_async:
             return self._run_coroutine(
                     self._index_read(table_name, column_name, term, filter))
         else:
@@ -236,8 +236,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def read_range(self, table_name, start_key, end_key, limit, async = False):
-        if async:
+    def read_range(self, table_name, start_key, end_key, limit, do_async = False):
+        if do_async:
             return self._run_coroutine(
                     self._read_range(table_name, start_key, end_key, limit))
         else:
@@ -255,8 +255,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def read_range_n(self, table_name, start_key, n, async = False):
-        if async:
+    def read_range_n(self, table_name, start_key, n, do_async = False):
+        if do_async:
             return self._run_coroutine(
                     self._read_range_n(table_name, start_key, n))
         else:
@@ -272,8 +272,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def first(self, table_name, async = False):
-        if async:
+    def first(self, table_name, do_async = False):
+        if do_async:
             return self._run_coroutine(self._first(table_name))
         else:
             return self.loop.run_until_complete(self._first(table_name))
@@ -284,8 +284,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def last(self, table_name, async = False):
-        if async:
+    def last(self, table_name, do_async = False):
+        if do_async:
             return self._run_coroutine(self._last(table_name))
         else:
             return self.loop.run_until_complete(self._last(table_name))
@@ -296,8 +296,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def seek(self, table_name, key, async = False):
-        if async:
+    def seek(self, table_name, key, do_async = False):
+        if do_async:
             return self._run_coroutine(self._seek(table_name, key))
         else:
             return self.loop.run_until_complete(self._seek(table_name, key))
@@ -310,8 +310,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def next(self, it, async = False):
-        if async:
+    def next(self, it, do_async = False):
+        if do_async:
             return self._run_coroutine(self._next(it))
         else:
             return self.loop.run_until_complete(self._next(it))
@@ -322,8 +322,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def prev(self, it, async = False):
-        if async:
+    def prev(self, it, do_async = False):
+        if do_async:
             return self._run_coroutine(self._prev(it))
         else:
             return self.loop.run_until_complete(self._prev(it))
@@ -334,8 +334,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def add_index(self, table_name, config, async = False):
-        if async:
+    def add_index(self, table_name, config, do_async = False):
+        if do_async:
             return self.loop._run_coroutine(
                     self._add_index(table_name, config))
         else:
@@ -349,8 +349,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def remove_index(self, table_name, columns, async = False):
-        if async:
+    def remove_index(self, table_name, columns, do_async = False):
+        if do_async:
             return self._run_coroutine(
                     self._remove_index(table_name, columns))
         else:
@@ -364,8 +364,8 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
-    def list_tables(self, async = False):
-        if async:
+    def list_tables(self, do_async = False):
+        if do_async:
             return self._run_coroutine(self._list_tables())
         else:
             return self.loop.run_until_complete(self._list_tables())
