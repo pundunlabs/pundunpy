@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='apollo.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0c\x61pollo.proto\"\x89\x06\n\tApolloPdu\x12\x19\n\x07version\x18\x01 \x01(\x0b\x32\x08.Version\x12\x16\n\x0etransaction_id\x18\x02 \x01(\r\x12\x17\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x06.ErrorH\x00\x12\x1d\n\x08response\x18\x04 \x01(\x0b\x32\t.ResponseH\x00\x12$\n\x0c\x63reate_table\x18\x05 \x01(\x0b\x32\x0c.CreateTableH\x00\x12$\n\x0c\x64\x65lete_table\x18\x06 \x01(\x0b\x32\x0c.DeleteTableH\x00\x12 \n\nopen_table\x18\x07 \x01(\x0b\x32\n.OpenTableH\x00\x12\"\n\x0b\x63lose_table\x18\x08 \x01(\x0b\x32\x0b.CloseTableH\x00\x12 \n\ntable_info\x18\t \x01(\x0b\x32\n.TableInfoH\x00\x12\x15\n\x04read\x18\n \x01(\x0b\x32\x05.ReadH\x00\x12\x17\n\x05write\x18\x0b \x01(\x0b\x32\x06.WriteH\x00\x12\x19\n\x06update\x18\x0c \x01(\x0b\x32\x07.UpdateH\x00\x12\x19\n\x06\x64\x65lete\x18\r \x01(\x0b\x32\x07.DeleteH\x00\x12 \n\nread_range\x18\x0e \x01(\x0b\x32\n.ReadRangeH\x00\x12#\n\x0cread_range_n\x18\x0f \x01(\x0b\x32\x0b.ReadRangeNH\x00\x12\"\n\x0b\x62\x61tch_write\x18\x10 \x01(\x0b\x32\x0b.BatchWriteH\x00\x12\x17\n\x05\x66irst\x18\x11 \x01(\x0b\x32\x06.FirstH\x00\x12\x15\n\x04last\x18\x12 \x01(\x0b\x32\x05.LastH\x00\x12\x15\n\x04seek\x18\x13 \x01(\x0b\x32\x05.SeekH\x00\x12\x15\n\x04next\x18\x14 \x01(\x0b\x32\x05.NextH\x00\x12\x15\n\x04prev\x18\x15 \x01(\x0b\x32\x05.PrevH\x00\x12\x1e\n\tadd_index\x18\x16 \x01(\x0b\x32\t.AddIndexH\x00\x12$\n\x0cremove_index\x18\x17 \x01(\x0b\x32\x0c.RemoveIndexH\x00\x12 \n\nindex_read\x18\x18 \x01(\x0b\x32\n.IndexReadH\x00\x12\"\n\x0blist_tables\x18\x19 \x01(\x0b\x32\x0b.ListTablesH\x00\x42\x0b\n\tprocedure\"b\n\nBatchWrite\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1b\n\x0b\x64\x65lete_keys\x18\x02 \x03(\x0b\x32\x06.Field\x12#\n\nwrite_kvps\x18\x03 \x03(\x0b\x32\x0f.KeyColumnsPair\" \n\nCloseTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"T\n\x0b\x43reateTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0c\n\x04keys\x18\x02 \x03(\t\x12#\n\rtable_options\x18\x03 \x03(\x0b\x32\x0c.TableOption\"1\n\x06\x44\x65lete\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"!\n\x0b\x44\x65leteTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"[\n\x05\x45rror\x12\x13\n\ttransport\x18\x01 \x01(\tH\x00\x12\x12\n\x08protocol\x18\x02 \x01(\tH\x00\x12\x10\n\x06system\x18\x03 \x01(\tH\x00\x12\x0e\n\x04misc\x18\x04 \x01(\tH\x00\x42\x07\n\x05\x63\x61use\"\x1f\n\tOpenTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Read\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"b\n\tReadRange\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x65nd_key\x18\x03 \x03(\x0b\x32\x06.Field\x12\r\n\x05limit\x18\x04 \x01(\r\"F\n\nReadRangeN\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\t\n\x01n\x18\x03 \x01(\r\"\xb0\x02\n\x08Response\x12\x0c\n\x02ok\x18\x01 \x01(\tH\x00\x12\x1a\n\x07\x63olumns\x18\x02 \x01(\x0b\x32\x07.FieldsH\x00\x12+\n\x10key_columns_pair\x18\x03 \x01(\x0b\x32\x0f.KeyColumnsPairH\x00\x12+\n\x10key_columns_list\x18\x04 \x01(\x0b\x32\x0f.KeyColumnsListH\x00\x12\x1b\n\x08proplist\x18\x05 \x01(\x0b\x32\x07.FieldsH\x00\x12\x18\n\x06kcp_it\x18\x06 \x01(\x0b\x32\x06.KcpItH\x00\x12\x1d\n\x08postings\x18\x07 \x01(\x0b\x32\t.PostingsH\x00\x12\"\n\x0bstring_list\x18\x08 \x01(\x0b\x32\x0b.FieldNamesH\x00\x12\x1c\n\x14more_data_to_be_sent\x18\t \x01(\x08\x42\x08\n\x06result\"3\n\tTableInfo\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"]\n\x06Update\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12*\n\x10update_operation\x18\x03 \x03(\x0b\x32\x10.UpdateOperation\"I\n\x05Write\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x03 \x03(\x0b\x32\x06.Field\"\x1b\n\x05\x46irst\x12\x12\n\ntable_name\x18\x01 \x01(\t\"\x1a\n\x04Last\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Seek\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"\x12\n\x04Next\x12\n\n\x02it\x18\x01 \x01(\x0c\"\x12\n\x04Prev\x12\n\n\x02it\x18\x01 \x01(\x0c\"<\n\x08\x41\x64\x64Index\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1c\n\x06\x63onfig\x18\x02 \x03(\x0b\x32\x0c.IndexConfig\"2\n\x0bRemoveIndex\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0f\n\x07\x63olumns\x18\x02 \x03(\t\"b\n\tIndexRead\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\x12\x1e\n\x06\x66ilter\x18\x04 \x01(\x0b\x32\x0e.PostingFilter\"\x0c\n\nListTables\"5\n\x0c\x43ontinuation\x12\x10\n\x08\x63omplete\x18\x01 \x01(\x08\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\",\n\x05\x46ield\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x05value\x18\x02 \x01(\x0b\x32\x06.Value\"!\n\nFieldNames\x12\x13\n\x0b\x66ield_names\x18\x01 \x03(\t\" \n\x06\x46ields\x12\x16\n\x06\x66ields\x18\x01 \x03(\x0b\x32\x06.Field\"=\n\x0bIndexConfig\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x1e\n\x07options\x18\x02 \x01(\x0b\x32\r.IndexOptions\"s\n\x0cIndexOptions\x12 \n\x0b\x63har_filter\x18\x01 \x01(\x0e\x32\x0b.CharFilter\x12\x1d\n\ttokenizer\x18\x02 \x01(\x0e\x32\n.Tokenizer\x12\"\n\x0ctoken_filter\x18\x03 \x01(\x0b\x32\x0c.TokenFilter\">\n\x0eKeyColumnsPair\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x02 \x03(\x0b\x32\x06.Field\"T\n\x0eKeyColumnsList\x12\x1d\n\x04list\x18\x01 \x03(\x0b\x32\x0f.KeyColumnsPair\x12#\n\x0c\x63ontinuation\x18\x02 \x01(\x0b\x32\r.Continuation\"V\n\x07Posting\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x11\n\tfrequency\x18\x03 \x01(\r\x12\x10\n\x08position\x18\x04 \x01(\r\"\"\n\x08Postings\x12\x16\n\x04list\x18\x01 \x03(\x0b\x32\x08.Posting\"a\n\rPostingFilter\x12\x18\n\x07sort_by\x18\x01 \x01(\x0e\x32\x07.SortBy\x12\x10\n\x08start_ts\x18\x02 \x01(\x0c\x12\x0e\n\x06\x65nd_ts\x18\x03 \x01(\x0c\x12\x14\n\x0cmax_postings\x18\x04 \x01(\r\">\n\x05KcpIt\x12)\n\x10key_columns_pair\x18\x01 \x01(\x0b\x32\x0f.KeyColumnsPair\x12\n\n\x02it\x18\x02 \x01(\x0c\"#\n\tListValue\x12\x16\n\x06values\x18\x01 \x03(\x0b\x32\x06.Value\"h\n\x08MapValue\x12%\n\x06values\x18\x01 \x03(\x0b\x32\x15.MapValue.ValuesEntry\x1a\x35\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x15\n\x05value\x18\x02 \x01(\x0b\x32\x06.Value:\x02\x38\x01\"\x85\x03\n\x0bTableOption\x12\x15\n\x04type\x18\x01 \x01(\x0e\x32\x05.TypeH\x00\x12 \n\ndata_model\x18\x02 \x01(\x0e\x32\n.DataModelH\x00\x12\x1b\n\x07wrapper\x18\x03 \x01(\x0b\x32\x08.WrapperH\x00\x12\x1f\n\x0bmem_wrapper\x18\x04 \x01(\x0b\x32\x08.WrapperH\x00\x12\x13\n\x03tda\x18\x05 \x01(\x0b\x32\x04.TdaH\x00\x12!\n\ncomparator\x18\x06 \x01(\x0e\x32\x0b.ComparatorH\x00\x12\x15\n\x0btime_series\x18\x07 \x01(\x08H\x00\x12\x17\n\rnum_of_shards\x18\x08 \x01(\rH\x00\x12\x15\n\x0b\x64istributed\x18\t \x01(\x08H\x00\x12\x1c\n\x12replication_factor\x18\n \x01(\rH\x00\x12\"\n\x0bhash_exlude\x18\x0b \x01(\x0b\x32\x0b.FieldNamesH\x00\x12(\n\x0ehashing_method\x18\x0c \x01(\x0e\x32\x0e.HashingMethodH\x00\x12\r\n\x03ttl\x18\r \x01(\rH\x00\x42\x05\n\x03opt\"\x93\x01\n\x03Tda\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x10\n\x08ts_field\x18\x05 \x01(\t\x12\x1c\n\tprecision\x18\x06 \x01(\x0e\x32\t.TimeUnitB\r\n\x0btime_margin\"j\n\x0bTokenFilter\x12\"\n\ttransform\x18\x01 \x01(\x0e\x32\x0f.TokenTransform\x12\x0b\n\x03\x61\x64\x64\x18\x02 \x03(\t\x12\x0e\n\x06\x64\x65lete\x18\x03 \x03(\t\x12\x1a\n\x05stats\x18\x04 \x01(\x0e\x32\x0b.TokenStats\"\x9b\x01\n\x11UpdateInstruction\x12\x33\n\x0binstruction\x18\x08 \x01(\x0e\x32\x1e.UpdateInstruction.Instruction\x12\x11\n\tthreshold\x18\x0e \x01(\x0c\x12\x11\n\tset_value\x18\x0f \x01(\x0c\"+\n\x0bInstruction\x12\r\n\tINCREMENT\x10\x00\x12\r\n\tOVERWRITE\x10\x07\"\x86\x01\n\x0fUpdateOperation\x12\r\n\x05\x66ield\x18\x01 \x01(\t\x12.\n\x12update_instruction\x18\x02 \x01(\x0b\x32\x12.UpdateInstruction\x12\x15\n\x05value\x18\x03 \x01(\x0b\x32\x06.Value\x12\x1d\n\rdefault_value\x18\x04 \x01(\x0b\x32\x06.Value\"\xad\x01\n\x05Value\x12\x11\n\x07\x62oolean\x18\x01 \x01(\x08H\x00\x12\r\n\x03int\x18\x02 \x01(\x03H\x00\x12\x10\n\x06\x62inary\x18\x03 \x01(\x0cH\x00\x12\x0e\n\x04null\x18\x04 \x01(\x0cH\x00\x12\x10\n\x06\x64ouble\x18\x05 \x01(\x01H\x00\x12\x10\n\x06string\x18\x06 \x01(\tH\x00\x12\x1a\n\x04list\x18\x07 \x01(\x0b\x32\n.ListValueH\x00\x12\x18\n\x03map\x18\x08 \x01(\x0b\x32\t.MapValueH\x00\x42\x06\n\x04type\"\'\n\x07Version\x12\r\n\x05major\x18\x01 \x01(\r\x12\r\n\x05minor\x18\x02 \x01(\r\"\xa0\x01\n\x07Wrapper\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x13\n\tmegabytes\x18\x05 \x01(\rH\x01\x12\x13\n\tgigabytes\x18\x06 \x01(\rH\x01\x42\r\n\x0btime_marginB\r\n\x0bsize_margin*2\n\nCharFilter\x12\x07\n\x03NFC\x10\x00\x12\x07\n\x03NFD\x10\x01\x12\x08\n\x04NFKC\x10\x02\x12\x08\n\x04NFKD\x10\x03*+\n\nComparator\x12\x0e\n\nDESCENDING\x10\x00\x12\r\n\tASCENDING\x10\x01*\'\n\tDataModel\x12\x06\n\x02KV\x10\x00\x12\t\n\x05\x41RRAY\x10\x01\x12\x07\n\x03MAP\x10\x02*N\n\rHashingMethod\x12\x10\n\x0cVIRTUALNODES\x10\x00\x12\x0e\n\nCONSISTENT\x10\x01\x12\x0b\n\x07UNIFORM\x10\x02\x12\x0e\n\nRENDEZVOUS\x10\x03*&\n\x06SortBy\x12\r\n\tRELEVANCE\x10\x00\x12\r\n\tTIMESTAMP\x10\x01*H\n\x08TimeUnit\x12\n\n\x06SECOND\x10\x00\x12\x0f\n\x0bMILLISECOND\x10\x01\x12\x0f\n\x0bMICROSECOND\x10\x02\x12\x0e\n\nNANOSECOND\x10\x03*(\n\tTokenizer\x12\x1b\n\x17UNICODE_WORD_BOUNDARIES\x10\x00*B\n\nTokenStats\x12\x0b\n\x07NOSTATS\x10\x00\x12\n\n\x06UNIQUE\x10\x01\x12\r\n\tFREQUENCY\x10\x02\x12\x0c\n\x08POSITION\x10\x03*<\n\x0eTokenTransform\x12\r\n\tLOWERCASE\x10\x00\x12\r\n\tUPPERCASE\x10\x01\x12\x0c\n\x08\x43\x41SEFOLD\x10\x02*~\n\x04Type\x12\x0b\n\x07LEVELDB\x10\x00\x12\x0e\n\nMEMLEVELDB\x10\x01\x12\x12\n\x0eLEVELDBWRAPPED\x10\x02\x12\x15\n\x11MEMLEVELDBWRAPPED\x10\x03\x12\x0e\n\nLEVELDBTDA\x10\x04\x12\x11\n\rMEMLEVELDBTDA\x10\x05\x12\x0b\n\x07ROCKSDB\x10\x06\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x61pollo.proto\"\xb3\x06\n\tApolloPdu\x12\x19\n\x07version\x18\x01 \x01(\x0b\x32\x08.Version\x12\x16\n\x0etransaction_id\x18\x02 \x01(\r\x12\x17\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x06.ErrorH\x00\x12\x1d\n\x08response\x18\x04 \x01(\x0b\x32\t.ResponseH\x00\x12$\n\x0c\x63reate_table\x18\x05 \x01(\x0b\x32\x0c.CreateTableH\x00\x12$\n\x0c\x64\x65lete_table\x18\x06 \x01(\x0b\x32\x0c.DeleteTableH\x00\x12 \n\nopen_table\x18\x07 \x01(\x0b\x32\n.OpenTableH\x00\x12\"\n\x0b\x63lose_table\x18\x08 \x01(\x0b\x32\x0b.CloseTableH\x00\x12 \n\ntable_info\x18\t \x01(\x0b\x32\n.TableInfoH\x00\x12\x15\n\x04read\x18\n \x01(\x0b\x32\x05.ReadH\x00\x12\x17\n\x05write\x18\x0b \x01(\x0b\x32\x06.WriteH\x00\x12\x19\n\x06update\x18\x0c \x01(\x0b\x32\x07.UpdateH\x00\x12\x19\n\x06\x64\x65lete\x18\r \x01(\x0b\x32\x07.DeleteH\x00\x12 \n\nread_range\x18\x0e \x01(\x0b\x32\n.ReadRangeH\x00\x12#\n\x0cread_range_n\x18\x0f \x01(\x0b\x32\x0b.ReadRangeNH\x00\x12\"\n\x0b\x62\x61tch_write\x18\x10 \x01(\x0b\x32\x0b.BatchWriteH\x00\x12\x17\n\x05\x66irst\x18\x11 \x01(\x0b\x32\x06.FirstH\x00\x12\x15\n\x04last\x18\x12 \x01(\x0b\x32\x05.LastH\x00\x12\x15\n\x04seek\x18\x13 \x01(\x0b\x32\x05.SeekH\x00\x12\x15\n\x04next\x18\x14 \x01(\x0b\x32\x05.NextH\x00\x12\x15\n\x04prev\x18\x15 \x01(\x0b\x32\x05.PrevH\x00\x12\x1e\n\tadd_index\x18\x16 \x01(\x0b\x32\t.AddIndexH\x00\x12$\n\x0cremove_index\x18\x17 \x01(\x0b\x32\x0c.RemoveIndexH\x00\x12 \n\nindex_read\x18\x18 \x01(\x0b\x32\n.IndexReadH\x00\x12\"\n\x0blist_tables\x18\x19 \x01(\x0b\x32\x0b.ListTablesH\x00\x12(\n\x0fread_range_n_ts\x18\x1a \x01(\x0b\x32\r.ReadRangeNTsH\x00\x42\x0b\n\tprocedure\"b\n\nBatchWrite\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1b\n\x0b\x64\x65lete_keys\x18\x02 \x03(\x0b\x32\x06.Field\x12#\n\nwrite_kvps\x18\x03 \x03(\x0b\x32\x0f.KeyColumnsPair\" \n\nCloseTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"T\n\x0b\x43reateTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0c\n\x04keys\x18\x02 \x03(\t\x12#\n\rtable_options\x18\x03 \x03(\x0b\x32\x0c.TableOption\"1\n\x06\x44\x65lete\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"!\n\x0b\x44\x65leteTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"[\n\x05\x45rror\x12\x13\n\ttransport\x18\x01 \x01(\tH\x00\x12\x12\n\x08protocol\x18\x02 \x01(\tH\x00\x12\x10\n\x06system\x18\x03 \x01(\tH\x00\x12\x0e\n\x04misc\x18\x04 \x01(\tH\x00\x42\x07\n\x05\x63\x61use\"\x1f\n\tOpenTable\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Read\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"b\n\tReadRange\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x65nd_key\x18\x03 \x03(\x0b\x32\x06.Field\x12\r\n\x05limit\x18\x04 \x01(\r\"F\n\nReadRangeN\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\t\n\x01n\x18\x03 \x01(\r\"H\n\x0cReadRangeNTs\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x19\n\tstart_key\x18\x02 \x03(\x0b\x32\x06.Field\x12\t\n\x01n\x18\x03 \x01(\r\"\xb0\x02\n\x08Response\x12\x0c\n\x02ok\x18\x01 \x01(\tH\x00\x12\x1a\n\x07\x63olumns\x18\x02 \x01(\x0b\x32\x07.FieldsH\x00\x12+\n\x10key_columns_pair\x18\x03 \x01(\x0b\x32\x0f.KeyColumnsPairH\x00\x12+\n\x10key_columns_list\x18\x04 \x01(\x0b\x32\x0f.KeyColumnsListH\x00\x12\x1b\n\x08proplist\x18\x05 \x01(\x0b\x32\x07.FieldsH\x00\x12\x18\n\x06kcp_it\x18\x06 \x01(\x0b\x32\x06.KcpItH\x00\x12\x1d\n\x08postings\x18\x07 \x01(\x0b\x32\t.PostingsH\x00\x12\"\n\x0bstring_list\x18\x08 \x01(\x0b\x32\x0b.FieldNamesH\x00\x12\x1c\n\x14more_data_to_be_sent\x18\t \x01(\x08\x42\x08\n\x06result\"3\n\tTableInfo\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"]\n\x06Update\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12*\n\x10update_operation\x18\x03 \x03(\x0b\x32\x10.UpdateOperation\"I\n\x05Write\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x03 \x03(\x0b\x32\x06.Field\"\x1b\n\x05\x46irst\x12\x12\n\ntable_name\x18\x01 \x01(\t\"\x1a\n\x04Last\x12\x12\n\ntable_name\x18\x01 \x01(\t\"/\n\x04Seek\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\"\x12\n\x04Next\x12\n\n\x02it\x18\x01 \x01(\x0c\"\x12\n\x04Prev\x12\n\n\x02it\x18\x01 \x01(\x0c\"<\n\x08\x41\x64\x64Index\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x1c\n\x06\x63onfig\x18\x02 \x03(\x0b\x32\x0c.IndexConfig\"2\n\x0bRemoveIndex\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x0f\n\x07\x63olumns\x18\x02 \x03(\t\"b\n\tIndexRead\x12\x12\n\ntable_name\x18\x01 \x01(\t\x12\x13\n\x0b\x63olumn_name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\x12\x1e\n\x06\x66ilter\x18\x04 \x01(\x0b\x32\x0e.PostingFilter\"\x0c\n\nListTables\"5\n\x0c\x43ontinuation\x12\x10\n\x08\x63omplete\x18\x01 \x01(\x08\x12\x13\n\x03key\x18\x02 \x03(\x0b\x32\x06.Field\",\n\x05\x46ield\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x15\n\x05value\x18\x02 \x01(\x0b\x32\x06.Value\"!\n\nFieldNames\x12\x13\n\x0b\x66ield_names\x18\x01 \x03(\t\" \n\x06\x46ields\x12\x16\n\x06\x66ields\x18\x01 \x03(\x0b\x32\x06.Field\"=\n\x0bIndexConfig\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x1e\n\x07options\x18\x02 \x01(\x0b\x32\r.IndexOptions\"s\n\x0cIndexOptions\x12 \n\x0b\x63har_filter\x18\x01 \x01(\x0e\x32\x0b.CharFilter\x12\x1d\n\ttokenizer\x18\x02 \x01(\x0e\x32\n.Tokenizer\x12\"\n\x0ctoken_filter\x18\x03 \x01(\x0b\x32\x0c.TokenFilter\">\n\x0eKeyColumnsPair\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x17\n\x07\x63olumns\x18\x02 \x03(\x0b\x32\x06.Field\"T\n\x0eKeyColumnsList\x12\x1d\n\x04list\x18\x01 \x03(\x0b\x32\x0f.KeyColumnsPair\x12#\n\x0c\x63ontinuation\x18\x02 \x01(\x0b\x32\r.Continuation\"V\n\x07Posting\x12\x13\n\x03key\x18\x01 \x03(\x0b\x32\x06.Field\x12\x11\n\ttimestamp\x18\x02 \x01(\r\x12\x11\n\tfrequency\x18\x03 \x01(\r\x12\x10\n\x08position\x18\x04 \x01(\r\"\"\n\x08Postings\x12\x16\n\x04list\x18\x01 \x03(\x0b\x32\x08.Posting\"a\n\rPostingFilter\x12\x18\n\x07sort_by\x18\x01 \x01(\x0e\x32\x07.SortBy\x12\x10\n\x08start_ts\x18\x02 \x01(\x0c\x12\x0e\n\x06\x65nd_ts\x18\x03 \x01(\x0c\x12\x14\n\x0cmax_postings\x18\x04 \x01(\r\">\n\x05KcpIt\x12)\n\x10key_columns_pair\x18\x01 \x01(\x0b\x32\x0f.KeyColumnsPair\x12\n\n\x02it\x18\x02 \x01(\x0c\"#\n\tListValue\x12\x16\n\x06values\x18\x01 \x03(\x0b\x32\x06.Value\"h\n\x08MapValue\x12%\n\x06values\x18\x01 \x03(\x0b\x32\x15.MapValue.ValuesEntry\x1a\x35\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x15\n\x05value\x18\x02 \x01(\x0b\x32\x06.Value:\x02\x38\x01\"\x85\x03\n\x0bTableOption\x12\x15\n\x04type\x18\x01 \x01(\x0e\x32\x05.TypeH\x00\x12 \n\ndata_model\x18\x02 \x01(\x0e\x32\n.DataModelH\x00\x12\x1b\n\x07wrapper\x18\x03 \x01(\x0b\x32\x08.WrapperH\x00\x12\x1f\n\x0bmem_wrapper\x18\x04 \x01(\x0b\x32\x08.WrapperH\x00\x12\x13\n\x03tda\x18\x05 \x01(\x0b\x32\x04.TdaH\x00\x12!\n\ncomparator\x18\x06 \x01(\x0e\x32\x0b.ComparatorH\x00\x12\x15\n\x0btime_series\x18\x07 \x01(\x08H\x00\x12\x17\n\rnum_of_shards\x18\x08 \x01(\rH\x00\x12\x15\n\x0b\x64istributed\x18\t \x01(\x08H\x00\x12\x1c\n\x12replication_factor\x18\n \x01(\rH\x00\x12\"\n\x0bhash_exlude\x18\x0b \x01(\x0b\x32\x0b.FieldNamesH\x00\x12(\n\x0ehashing_method\x18\x0c \x01(\x0e\x32\x0e.HashingMethodH\x00\x12\r\n\x03ttl\x18\r \x01(\rH\x00\x42\x05\n\x03opt\"\x93\x01\n\x03Tda\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x10\n\x08ts_field\x18\x05 \x01(\t\x12\x1c\n\tprecision\x18\x06 \x01(\x0e\x32\t.TimeUnitB\r\n\x0btime_margin\"j\n\x0bTokenFilter\x12\"\n\ttransform\x18\x01 \x01(\x0e\x32\x0f.TokenTransform\x12\x0b\n\x03\x61\x64\x64\x18\x02 \x03(\t\x12\x0e\n\x06\x64\x65lete\x18\x03 \x03(\t\x12\x1a\n\x05stats\x18\x04 \x01(\x0e\x32\x0b.TokenStats\"\x9b\x01\n\x11UpdateInstruction\x12\x33\n\x0binstruction\x18\x08 \x01(\x0e\x32\x1e.UpdateInstruction.Instruction\x12\x11\n\tthreshold\x18\x0e \x01(\x0c\x12\x11\n\tset_value\x18\x0f \x01(\x0c\"+\n\x0bInstruction\x12\r\n\tINCREMENT\x10\x00\x12\r\n\tOVERWRITE\x10\x07\"\x86\x01\n\x0fUpdateOperation\x12\r\n\x05\x66ield\x18\x01 \x01(\t\x12.\n\x12update_instruction\x18\x02 \x01(\x0b\x32\x12.UpdateInstruction\x12\x15\n\x05value\x18\x03 \x01(\x0b\x32\x06.Value\x12\x1d\n\rdefault_value\x18\x04 \x01(\x0b\x32\x06.Value\"\xad\x01\n\x05Value\x12\x11\n\x07\x62oolean\x18\x01 \x01(\x08H\x00\x12\r\n\x03int\x18\x02 \x01(\x03H\x00\x12\x10\n\x06\x62inary\x18\x03 \x01(\x0cH\x00\x12\x0e\n\x04null\x18\x04 \x01(\x0cH\x00\x12\x10\n\x06\x64ouble\x18\x05 \x01(\x01H\x00\x12\x10\n\x06string\x18\x06 \x01(\tH\x00\x12\x1a\n\x04list\x18\x07 \x01(\x0b\x32\n.ListValueH\x00\x12\x18\n\x03map\x18\x08 \x01(\x0b\x32\t.MapValueH\x00\x42\x06\n\x04type\"\'\n\x07Version\x12\r\n\x05major\x18\x01 \x01(\r\x12\r\n\x05minor\x18\x02 \x01(\r\"\xa0\x01\n\x07Wrapper\x12\x16\n\x0enum_of_buckets\x18\x01 \x01(\r\x12\x11\n\x07seconds\x18\x02 \x01(\rH\x00\x12\x11\n\x07minutes\x18\x03 \x01(\rH\x00\x12\x0f\n\x05hours\x18\x04 \x01(\rH\x00\x12\x13\n\tmegabytes\x18\x05 \x01(\rH\x01\x12\x13\n\tgigabytes\x18\x06 \x01(\rH\x01\x42\r\n\x0btime_marginB\r\n\x0bsize_margin*2\n\nCharFilter\x12\x07\n\x03NFC\x10\x00\x12\x07\n\x03NFD\x10\x01\x12\x08\n\x04NFKC\x10\x02\x12\x08\n\x04NFKD\x10\x03*+\n\nComparator\x12\x0e\n\nDESCENDING\x10\x00\x12\r\n\tASCENDING\x10\x01*\'\n\tDataModel\x12\x06\n\x02KV\x10\x00\x12\t\n\x05\x41RRAY\x10\x01\x12\x07\n\x03MAP\x10\x02*N\n\rHashingMethod\x12\x10\n\x0cVIRTUALNODES\x10\x00\x12\x0e\n\nCONSISTENT\x10\x01\x12\x0b\n\x07UNIFORM\x10\x02\x12\x0e\n\nRENDEZVOUS\x10\x03*&\n\x06SortBy\x12\r\n\tRELEVANCE\x10\x00\x12\r\n\tTIMESTAMP\x10\x01*H\n\x08TimeUnit\x12\n\n\x06SECOND\x10\x00\x12\x0f\n\x0bMILLISECOND\x10\x01\x12\x0f\n\x0bMICROSECOND\x10\x02\x12\x0e\n\nNANOSECOND\x10\x03*(\n\tTokenizer\x12\x1b\n\x17UNICODE_WORD_BOUNDARIES\x10\x00*B\n\nTokenStats\x12\x0b\n\x07NOSTATS\x10\x00\x12\n\n\x06UNIQUE\x10\x01\x12\r\n\tFREQUENCY\x10\x02\x12\x0c\n\x08POSITION\x10\x03*<\n\x0eTokenTransform\x12\r\n\tLOWERCASE\x10\x00\x12\r\n\tUPPERCASE\x10\x01\x12\x0c\n\x08\x43\x41SEFOLD\x10\x02*~\n\x04Type\x12\x0b\n\x07LEVELDB\x10\x00\x12\x0e\n\nMEMLEVELDB\x10\x01\x12\x12\n\x0eLEVELDBWRAPPED\x10\x02\x12\x15\n\x11MEMLEVELDBWRAPPED\x10\x03\x12\x0e\n\nLEVELDBTDA\x10\x04\x12\x11\n\rMEMLEVELDBTDA\x10\x05\x12\x0b\n\x07ROCKSDB\x10\x06\x62\x06proto3')
 )
 
 _CHARFILTER = _descriptor.EnumDescriptor(
@@ -48,8 +48,8 @@ _CHARFILTER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4608,
-  serialized_end=4658,
+  serialized_start=4724,
+  serialized_end=4774,
 )
 _sym_db.RegisterEnumDescriptor(_CHARFILTER)
 
@@ -71,8 +71,8 @@ _COMPARATOR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4660,
-  serialized_end=4703,
+  serialized_start=4776,
+  serialized_end=4819,
 )
 _sym_db.RegisterEnumDescriptor(_COMPARATOR)
 
@@ -98,8 +98,8 @@ _DATAMODEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4705,
-  serialized_end=4744,
+  serialized_start=4821,
+  serialized_end=4860,
 )
 _sym_db.RegisterEnumDescriptor(_DATAMODEL)
 
@@ -129,8 +129,8 @@ _HASHINGMETHOD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4746,
-  serialized_end=4824,
+  serialized_start=4862,
+  serialized_end=4940,
 )
 _sym_db.RegisterEnumDescriptor(_HASHINGMETHOD)
 
@@ -152,8 +152,8 @@ _SORTBY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4826,
-  serialized_end=4864,
+  serialized_start=4942,
+  serialized_end=4980,
 )
 _sym_db.RegisterEnumDescriptor(_SORTBY)
 
@@ -183,8 +183,8 @@ _TIMEUNIT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4866,
-  serialized_end=4938,
+  serialized_start=4982,
+  serialized_end=5054,
 )
 _sym_db.RegisterEnumDescriptor(_TIMEUNIT)
 
@@ -202,8 +202,8 @@ _TOKENIZER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4940,
-  serialized_end=4980,
+  serialized_start=5056,
+  serialized_end=5096,
 )
 _sym_db.RegisterEnumDescriptor(_TOKENIZER)
 
@@ -233,8 +233,8 @@ _TOKENSTATS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4982,
-  serialized_end=5048,
+  serialized_start=5098,
+  serialized_end=5164,
 )
 _sym_db.RegisterEnumDescriptor(_TOKENSTATS)
 
@@ -260,8 +260,8 @@ _TOKENTRANSFORM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=5050,
-  serialized_end=5110,
+  serialized_start=5166,
+  serialized_end=5226,
 )
 _sym_db.RegisterEnumDescriptor(_TOKENTRANSFORM)
 
@@ -303,8 +303,8 @@ _TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=5112,
-  serialized_end=5238,
+  serialized_start=5228,
+  serialized_end=5354,
 )
 _sym_db.RegisterEnumDescriptor(_TYPE)
 
@@ -362,8 +362,8 @@ _UPDATEINSTRUCTION_INSTRUCTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4046,
-  serialized_end=4089,
+  serialized_start=4162,
+  serialized_end=4205,
 )
 _sym_db.RegisterEnumDescriptor(_UPDATEINSTRUCTION_INSTRUCTION)
 
@@ -381,175 +381,182 @@ _APOLLOPDU = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='transaction_id', full_name='ApolloPdu.transaction_id', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='error', full_name='ApolloPdu.error', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='response', full_name='ApolloPdu.response', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='create_table', full_name='ApolloPdu.create_table', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='delete_table', full_name='ApolloPdu.delete_table', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='open_table', full_name='ApolloPdu.open_table', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='close_table', full_name='ApolloPdu.close_table', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='table_info', full_name='ApolloPdu.table_info', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='read', full_name='ApolloPdu.read', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='write', full_name='ApolloPdu.write', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='update', full_name='ApolloPdu.update', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='delete', full_name='ApolloPdu.delete', index=12,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='read_range', full_name='ApolloPdu.read_range', index=13,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='read_range_n', full_name='ApolloPdu.read_range_n', index=14,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='batch_write', full_name='ApolloPdu.batch_write', index=15,
       number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='first', full_name='ApolloPdu.first', index=16,
       number=17, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='last', full_name='ApolloPdu.last', index=17,
       number=18, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='seek', full_name='ApolloPdu.seek', index=18,
       number=19, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='next', full_name='ApolloPdu.next', index=19,
       number=20, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='prev', full_name='ApolloPdu.prev', index=20,
       number=21, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='add_index', full_name='ApolloPdu.add_index', index=21,
       number=22, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='remove_index', full_name='ApolloPdu.remove_index', index=22,
       number=23, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='index_read', full_name='ApolloPdu.index_read', index=23,
       number=24, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='list_tables', full_name='ApolloPdu.list_tables', index=24,
       number=25, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='read_range_n_ts', full_name='ApolloPdu.read_range_n_ts', index=25,
+      number=26, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -566,7 +573,7 @@ _APOLLOPDU = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=17,
-  serialized_end=794,
+  serialized_end=836,
 )
 
 
@@ -583,21 +590,21 @@ _BATCHWRITE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='delete_keys', full_name='BatchWrite.delete_keys', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='write_kvps', full_name='BatchWrite.write_kvps', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -610,8 +617,8 @@ _BATCHWRITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=796,
-  serialized_end=894,
+  serialized_start=838,
+  serialized_end=936,
 )
 
 
@@ -628,7 +635,7 @@ _CLOSETABLE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -641,8 +648,8 @@ _CLOSETABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=896,
-  serialized_end=928,
+  serialized_start=938,
+  serialized_end=970,
 )
 
 
@@ -659,21 +666,21 @@ _CREATETABLE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='keys', full_name='CreateTable.keys', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='table_options', full_name='CreateTable.table_options', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -686,8 +693,8 @@ _CREATETABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=930,
-  serialized_end=1014,
+  serialized_start=972,
+  serialized_end=1056,
 )
 
 
@@ -704,14 +711,14 @@ _DELETE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Delete.key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -724,8 +731,8 @@ _DELETE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1016,
-  serialized_end=1065,
+  serialized_start=1058,
+  serialized_end=1107,
 )
 
 
@@ -742,7 +749,7 @@ _DELETETABLE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -755,8 +762,8 @@ _DELETETABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1067,
-  serialized_end=1100,
+  serialized_start=1109,
+  serialized_end=1142,
 )
 
 
@@ -773,28 +780,28 @@ _ERROR = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='protocol', full_name='Error.protocol', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='system', full_name='Error.system', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='misc', full_name='Error.misc', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -810,8 +817,8 @@ _ERROR = _descriptor.Descriptor(
       name='cause', full_name='Error.cause',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1102,
-  serialized_end=1193,
+  serialized_start=1144,
+  serialized_end=1235,
 )
 
 
@@ -828,7 +835,7 @@ _OPENTABLE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -841,8 +848,8 @@ _OPENTABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1195,
-  serialized_end=1226,
+  serialized_start=1237,
+  serialized_end=1268,
 )
 
 
@@ -859,14 +866,14 @@ _READ = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Read.key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -879,8 +886,8 @@ _READ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1228,
-  serialized_end=1275,
+  serialized_start=1270,
+  serialized_end=1317,
 )
 
 
@@ -897,28 +904,28 @@ _READRANGE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='start_key', full_name='ReadRange.start_key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='end_key', full_name='ReadRange.end_key', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit', full_name='ReadRange.limit', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -931,8 +938,8 @@ _READRANGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1277,
-  serialized_end=1375,
+  serialized_start=1319,
+  serialized_end=1417,
 )
 
 
@@ -949,21 +956,21 @@ _READRANGEN = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='start_key', full_name='ReadRangeN.start_key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='n', full_name='ReadRangeN.n', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -976,8 +983,53 @@ _READRANGEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1377,
-  serialized_end=1447,
+  serialized_start=1419,
+  serialized_end=1489,
+)
+
+
+_READRANGENTS = _descriptor.Descriptor(
+  name='ReadRangeNTs',
+  full_name='ReadRangeNTs',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='table_name', full_name='ReadRangeNTs.table_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='start_key', full_name='ReadRangeNTs.start_key', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='n', full_name='ReadRangeNTs.n', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1491,
+  serialized_end=1563,
 )
 
 
@@ -994,63 +1046,63 @@ _RESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='columns', full_name='Response.columns', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key_columns_pair', full_name='Response.key_columns_pair', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key_columns_list', full_name='Response.key_columns_list', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='proplist', full_name='Response.proplist', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='kcp_it', full_name='Response.kcp_it', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='postings', full_name='Response.postings', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string_list', full_name='Response.string_list', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='more_data_to_be_sent', full_name='Response.more_data_to_be_sent', index=8,
       number=9, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1066,8 +1118,8 @@ _RESPONSE = _descriptor.Descriptor(
       name='result', full_name='Response.result',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1450,
-  serialized_end=1754,
+  serialized_start=1566,
+  serialized_end=1870,
 )
 
 
@@ -1084,14 +1136,14 @@ _TABLEINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='attributes', full_name='TableInfo.attributes', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1104,8 +1156,8 @@ _TABLEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1756,
-  serialized_end=1807,
+  serialized_start=1872,
+  serialized_end=1923,
 )
 
 
@@ -1122,21 +1174,21 @@ _UPDATE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Update.key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='update_operation', full_name='Update.update_operation', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1149,8 +1201,8 @@ _UPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1809,
-  serialized_end=1902,
+  serialized_start=1925,
+  serialized_end=2018,
 )
 
 
@@ -1167,21 +1219,21 @@ _WRITE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Write.key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='columns', full_name='Write.columns', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1194,8 +1246,8 @@ _WRITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1904,
-  serialized_end=1977,
+  serialized_start=2020,
+  serialized_end=2093,
 )
 
 
@@ -1212,7 +1264,7 @@ _FIRST = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1225,8 +1277,8 @@ _FIRST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1979,
-  serialized_end=2006,
+  serialized_start=2095,
+  serialized_end=2122,
 )
 
 
@@ -1243,7 +1295,7 @@ _LAST = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1256,8 +1308,8 @@ _LAST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2008,
-  serialized_end=2034,
+  serialized_start=2124,
+  serialized_end=2150,
 )
 
 
@@ -1274,14 +1326,14 @@ _SEEK = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Seek.key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1294,8 +1346,8 @@ _SEEK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2036,
-  serialized_end=2083,
+  serialized_start=2152,
+  serialized_end=2199,
 )
 
 
@@ -1312,7 +1364,7 @@ _NEXT = _descriptor.Descriptor(
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1325,8 +1377,8 @@ _NEXT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2085,
-  serialized_end=2103,
+  serialized_start=2201,
+  serialized_end=2219,
 )
 
 
@@ -1343,7 +1395,7 @@ _PREV = _descriptor.Descriptor(
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1356,8 +1408,8 @@ _PREV = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2105,
-  serialized_end=2123,
+  serialized_start=2221,
+  serialized_end=2239,
 )
 
 
@@ -1374,14 +1426,14 @@ _ADDINDEX = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='config', full_name='AddIndex.config', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1394,8 +1446,8 @@ _ADDINDEX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2125,
-  serialized_end=2185,
+  serialized_start=2241,
+  serialized_end=2301,
 )
 
 
@@ -1412,14 +1464,14 @@ _REMOVEINDEX = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='columns', full_name='RemoveIndex.columns', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1432,8 +1484,8 @@ _REMOVEINDEX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2187,
-  serialized_end=2237,
+  serialized_start=2303,
+  serialized_end=2353,
 )
 
 
@@ -1450,28 +1502,28 @@ _INDEXREAD = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='column_name', full_name='IndexRead.column_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='term', full_name='IndexRead.term', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='filter', full_name='IndexRead.filter', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1484,8 +1536,8 @@ _INDEXREAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2239,
-  serialized_end=2337,
+  serialized_start=2355,
+  serialized_end=2453,
 )
 
 
@@ -1508,8 +1560,8 @@ _LISTTABLES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2339,
-  serialized_end=2351,
+  serialized_start=2455,
+  serialized_end=2467,
 )
 
 
@@ -1526,14 +1578,14 @@ _CONTINUATION = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='key', full_name='Continuation.key', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1546,8 +1598,8 @@ _CONTINUATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2353,
-  serialized_end=2406,
+  serialized_start=2469,
+  serialized_end=2522,
 )
 
 
@@ -1564,14 +1616,14 @@ _FIELD = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='Field.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1584,8 +1636,8 @@ _FIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2408,
-  serialized_end=2452,
+  serialized_start=2524,
+  serialized_end=2568,
 )
 
 
@@ -1602,7 +1654,7 @@ _FIELDNAMES = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1615,8 +1667,8 @@ _FIELDNAMES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2454,
-  serialized_end=2487,
+  serialized_start=2570,
+  serialized_end=2603,
 )
 
 
@@ -1633,7 +1685,7 @@ _FIELDS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1646,8 +1698,8 @@ _FIELDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2489,
-  serialized_end=2521,
+  serialized_start=2605,
+  serialized_end=2637,
 )
 
 
@@ -1664,14 +1716,14 @@ _INDEXCONFIG = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='options', full_name='IndexConfig.options', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1684,8 +1736,8 @@ _INDEXCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2523,
-  serialized_end=2584,
+  serialized_start=2639,
+  serialized_end=2700,
 )
 
 
@@ -1702,21 +1754,21 @@ _INDEXOPTIONS = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tokenizer', full_name='IndexOptions.tokenizer', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='token_filter', full_name='IndexOptions.token_filter', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1729,8 +1781,8 @@ _INDEXOPTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2586,
-  serialized_end=2701,
+  serialized_start=2702,
+  serialized_end=2817,
 )
 
 
@@ -1747,14 +1799,14 @@ _KEYCOLUMNSPAIR = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='columns', full_name='KeyColumnsPair.columns', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1767,8 +1819,8 @@ _KEYCOLUMNSPAIR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2703,
-  serialized_end=2765,
+  serialized_start=2819,
+  serialized_end=2881,
 )
 
 
@@ -1785,14 +1837,14 @@ _KEYCOLUMNSLIST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='continuation', full_name='KeyColumnsList.continuation', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1805,8 +1857,8 @@ _KEYCOLUMNSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2767,
-  serialized_end=2851,
+  serialized_start=2883,
+  serialized_end=2967,
 )
 
 
@@ -1823,28 +1875,28 @@ _POSTING = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='timestamp', full_name='Posting.timestamp', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='frequency', full_name='Posting.frequency', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='position', full_name='Posting.position', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1857,8 +1909,8 @@ _POSTING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2853,
-  serialized_end=2939,
+  serialized_start=2969,
+  serialized_end=3055,
 )
 
 
@@ -1875,7 +1927,7 @@ _POSTINGS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1888,8 +1940,8 @@ _POSTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2941,
-  serialized_end=2975,
+  serialized_start=3057,
+  serialized_end=3091,
 )
 
 
@@ -1906,28 +1958,28 @@ _POSTINGFILTER = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='start_ts', full_name='PostingFilter.start_ts', index=1,
       number=2, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='end_ts', full_name='PostingFilter.end_ts', index=2,
       number=3, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='max_postings', full_name='PostingFilter.max_postings', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1940,8 +1992,8 @@ _POSTINGFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2977,
-  serialized_end=3074,
+  serialized_start=3093,
+  serialized_end=3190,
 )
 
 
@@ -1958,14 +2010,14 @@ _KCPIT = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='it', full_name='KcpIt.it', index=1,
       number=2, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1978,8 +2030,8 @@ _KCPIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3076,
-  serialized_end=3138,
+  serialized_start=3192,
+  serialized_end=3254,
 )
 
 
@@ -1996,7 +2048,7 @@ _LISTVALUE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2009,8 +2061,8 @@ _LISTVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3140,
-  serialized_end=3175,
+  serialized_start=3256,
+  serialized_end=3291,
 )
 
 
@@ -2027,14 +2079,14 @@ _MAPVALUE_VALUESENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='MapValue.ValuesEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2047,8 +2099,8 @@ _MAPVALUE_VALUESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3228,
-  serialized_end=3281,
+  serialized_start=3344,
+  serialized_end=3397,
 )
 
 _MAPVALUE = _descriptor.Descriptor(
@@ -2064,7 +2116,7 @@ _MAPVALUE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2077,8 +2129,8 @@ _MAPVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3177,
-  serialized_end=3281,
+  serialized_start=3293,
+  serialized_end=3397,
 )
 
 
@@ -2095,91 +2147,91 @@ _TABLEOPTION = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='data_model', full_name='TableOption.data_model', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='wrapper', full_name='TableOption.wrapper', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='mem_wrapper', full_name='TableOption.mem_wrapper', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='tda', full_name='TableOption.tda', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='comparator', full_name='TableOption.comparator', index=5,
       number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='time_series', full_name='TableOption.time_series', index=6,
       number=7, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='num_of_shards', full_name='TableOption.num_of_shards', index=7,
       number=8, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='distributed', full_name='TableOption.distributed', index=8,
       number=9, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='replication_factor', full_name='TableOption.replication_factor', index=9,
       number=10, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hash_exlude', full_name='TableOption.hash_exlude', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hashing_method', full_name='TableOption.hashing_method', index=11,
       number=12, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ttl', full_name='TableOption.ttl', index=12,
       number=13, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2195,8 +2247,8 @@ _TABLEOPTION = _descriptor.Descriptor(
       name='opt', full_name='TableOption.opt',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=3284,
-  serialized_end=3673,
+  serialized_start=3400,
+  serialized_end=3789,
 )
 
 
@@ -2213,42 +2265,42 @@ _TDA = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='seconds', full_name='Tda.seconds', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='minutes', full_name='Tda.minutes', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hours', full_name='Tda.hours', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='ts_field', full_name='Tda.ts_field', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='precision', full_name='Tda.precision', index=5,
       number=6, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2264,8 +2316,8 @@ _TDA = _descriptor.Descriptor(
       name='time_margin', full_name='Tda.time_margin',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=3676,
-  serialized_end=3823,
+  serialized_start=3792,
+  serialized_end=3939,
 )
 
 
@@ -2282,28 +2334,28 @@ _TOKENFILTER = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='add', full_name='TokenFilter.add', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='delete', full_name='TokenFilter.delete', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='stats', full_name='TokenFilter.stats', index=3,
       number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2316,8 +2368,8 @@ _TOKENFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3825,
-  serialized_end=3931,
+  serialized_start=3941,
+  serialized_end=4047,
 )
 
 
@@ -2334,21 +2386,21 @@ _UPDATEINSTRUCTION = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='threshold', full_name='UpdateInstruction.threshold', index=1,
       number=14, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='set_value', full_name='UpdateInstruction.set_value', index=2,
       number=15, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2362,8 +2414,8 @@ _UPDATEINSTRUCTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3934,
-  serialized_end=4089,
+  serialized_start=4050,
+  serialized_end=4205,
 )
 
 
@@ -2380,28 +2432,28 @@ _UPDATEOPERATION = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='update_instruction', full_name='UpdateOperation.update_instruction', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='value', full_name='UpdateOperation.value', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='default_value', full_name='UpdateOperation.default_value', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2414,8 +2466,8 @@ _UPDATEOPERATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4092,
-  serialized_end=4226,
+  serialized_start=4208,
+  serialized_end=4342,
 )
 
 
@@ -2432,56 +2484,56 @@ _VALUE = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='int', full_name='Value.int', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='binary', full_name='Value.binary', index=2,
       number=3, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='null', full_name='Value.null', index=3,
       number=4, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='double', full_name='Value.double', index=4,
       number=5, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='string', full_name='Value.string', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='list', full_name='Value.list', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='map', full_name='Value.map', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2497,8 +2549,8 @@ _VALUE = _descriptor.Descriptor(
       name='type', full_name='Value.type',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=4229,
-  serialized_end=4402,
+  serialized_start=4345,
+  serialized_end=4518,
 )
 
 
@@ -2515,14 +2567,14 @@ _VERSION = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='minor', full_name='Version.minor', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2535,8 +2587,8 @@ _VERSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4404,
-  serialized_end=4443,
+  serialized_start=4520,
+  serialized_end=4559,
 )
 
 
@@ -2553,42 +2605,42 @@ _WRAPPER = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='seconds', full_name='Wrapper.seconds', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='minutes', full_name='Wrapper.minutes', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='hours', full_name='Wrapper.hours', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='megabytes', full_name='Wrapper.megabytes', index=4,
       number=5, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='gigabytes', full_name='Wrapper.gigabytes', index=5,
       number=6, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -2607,8 +2659,8 @@ _WRAPPER = _descriptor.Descriptor(
       name='size_margin', full_name='Wrapper.size_margin',
       index=1, containing_type=None, fields=[]),
   ],
-  serialized_start=4446,
-  serialized_end=4606,
+  serialized_start=4562,
+  serialized_end=4722,
 )
 
 _APOLLOPDU.fields_by_name['version'].message_type = _VERSION
@@ -2635,6 +2687,7 @@ _APOLLOPDU.fields_by_name['add_index'].message_type = _ADDINDEX
 _APOLLOPDU.fields_by_name['remove_index'].message_type = _REMOVEINDEX
 _APOLLOPDU.fields_by_name['index_read'].message_type = _INDEXREAD
 _APOLLOPDU.fields_by_name['list_tables'].message_type = _LISTTABLES
+_APOLLOPDU.fields_by_name['read_range_n_ts'].message_type = _READRANGENTS
 _APOLLOPDU.oneofs_by_name['procedure'].fields.append(
   _APOLLOPDU.fields_by_name['error'])
 _APOLLOPDU.fields_by_name['error'].containing_oneof = _APOLLOPDU.oneofs_by_name['procedure']
@@ -2704,6 +2757,9 @@ _APOLLOPDU.fields_by_name['index_read'].containing_oneof = _APOLLOPDU.oneofs_by_
 _APOLLOPDU.oneofs_by_name['procedure'].fields.append(
   _APOLLOPDU.fields_by_name['list_tables'])
 _APOLLOPDU.fields_by_name['list_tables'].containing_oneof = _APOLLOPDU.oneofs_by_name['procedure']
+_APOLLOPDU.oneofs_by_name['procedure'].fields.append(
+  _APOLLOPDU.fields_by_name['read_range_n_ts'])
+_APOLLOPDU.fields_by_name['read_range_n_ts'].containing_oneof = _APOLLOPDU.oneofs_by_name['procedure']
 _BATCHWRITE.fields_by_name['delete_keys'].message_type = _FIELD
 _BATCHWRITE.fields_by_name['write_kvps'].message_type = _KEYCOLUMNSPAIR
 _CREATETABLE.fields_by_name['table_options'].message_type = _TABLEOPTION
@@ -2724,6 +2780,7 @@ _READ.fields_by_name['key'].message_type = _FIELD
 _READRANGE.fields_by_name['start_key'].message_type = _FIELD
 _READRANGE.fields_by_name['end_key'].message_type = _FIELD
 _READRANGEN.fields_by_name['start_key'].message_type = _FIELD
+_READRANGENTS.fields_by_name['start_key'].message_type = _FIELD
 _RESPONSE.fields_by_name['columns'].message_type = _FIELDS
 _RESPONSE.fields_by_name['key_columns_pair'].message_type = _KEYCOLUMNSPAIR
 _RESPONSE.fields_by_name['key_columns_list'].message_type = _KEYCOLUMNSLIST
@@ -2897,6 +2954,7 @@ DESCRIPTOR.message_types_by_name['OpenTable'] = _OPENTABLE
 DESCRIPTOR.message_types_by_name['Read'] = _READ
 DESCRIPTOR.message_types_by_name['ReadRange'] = _READRANGE
 DESCRIPTOR.message_types_by_name['ReadRangeN'] = _READRANGEN
+DESCRIPTOR.message_types_by_name['ReadRangeNTs'] = _READRANGENTS
 DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
 DESCRIPTOR.message_types_by_name['TableInfo'] = _TABLEINFO
 DESCRIPTOR.message_types_by_name['Update'] = _UPDATE
@@ -3020,6 +3078,13 @@ ReadRangeN = _reflection.GeneratedProtocolMessageType('ReadRangeN', (_message.Me
   # @@protoc_insertion_point(class_scope:ReadRangeN)
   ))
 _sym_db.RegisterMessage(ReadRangeN)
+
+ReadRangeNTs = _reflection.GeneratedProtocolMessageType('ReadRangeNTs', (_message.Message,), dict(
+  DESCRIPTOR = _READRANGENTS,
+  __module__ = 'apollo_pb2'
+  # @@protoc_insertion_point(class_scope:ReadRangeNTs)
+  ))
+_sym_db.RegisterMessage(ReadRangeNTs)
 
 Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), dict(
   DESCRIPTOR = _RESPONSE,

@@ -324,6 +324,23 @@ class Client:
         rpdu = await self._write_pdu(pdu)
         return utils.format_rpdu(rpdu)
 
+    def read_range_n_ts(self, table_name, start_key, n, do_async = False):
+        if do_async:
+            return self._run_coroutine(
+                    self._read_range_n_ts(table_name, start_key, n))
+        else:
+            return self.loop.run_until_complete(
+                    self._read_range_n_ts(table_name, start_key, n))
+
+    async def _read_range_n_ts(self, table_name, start_key, n):
+        pdu = self._make_pdu()
+        pdu.read_range_n_ts.table_name = table_name
+        start_key_fields = utils.make_fields(start_key)
+        pdu.read_range_n_ts.start_key.extend(start_key_fields)
+        pdu.read_range_n_ts.n = n
+        rpdu = await self._write_pdu(pdu)
+        return utils.format_rpdu(rpdu)
+
     def first(self, table_name, do_async = False):
         if do_async:
             return self._run_coroutine(self._first(table_name))
