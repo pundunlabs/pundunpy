@@ -6,7 +6,7 @@ name = "pypi"
 [dev-packages]
 
 [packages]
-scrampy = {editable = true, ref = "master", git = "https://github.com/pundunpy/scrampy.git"}
+scrampy = {editable = true, ref = "master", git = "https://github.com/pundunlabs/scrampy.git"}
 protobuf = "==3.5.1"
 
 [requires]
