@@ -56,7 +56,7 @@ client.read(table_name, key2)
 We can read a range:
 ```
 client.read_range(table_name, key2, key1, 2)
-``
+```
 
 And we can delete the table using the `delete_table` method:
 ```
