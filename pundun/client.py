@@ -2,12 +2,13 @@
 import asyncio
 import pprint
 import logging
-from pundun import apollo_pb2 as apollo
-from pundun import utils
-import scram
 import sys
 import ssl
 from concurrent.futures import CancelledError
+
+from pundun import apollo_pb2 as apollo
+from pundun import utils
+from scrampy import scram
 
 class Client:
     """Client class including pundun procedures."""
